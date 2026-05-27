@@ -82,8 +82,12 @@ def test_builder_summaries_are_computed() -> None:
 
 	assert set(summaries) == {orbit.orbit_id for orbit in hexagon_orbits}
 	for summary in summaries.values():
-		assert len(summary.angle_pattern_code) == 6
-		assert len(summary.side_pattern_code) == 6
+		assert len(summary.angle_pattern) == 6
+		assert len(summary.angle_pattern_unoriented) == 6
+		assert len(summary.side_pattern) == 6
+		assert len(summary.side_pattern_unoriented) == 6
+		assert len(summary.dihedral_pattern) == 6
+		assert len(summary.dihedral_pattern_unoriented) == 6
 		assert summary.orientation == "GP(4,2); mirror GP(2,4)"
 		assert summary.difficulty in ("easy", "medium", "hard")
 		assert summary.suggested_use
@@ -92,3 +96,18 @@ def test_builder_summaries_are_computed() -> None:
 			"needs testing",
 			"custom / high distortion",
 		)
+
+
+#============================================
+def test_pattern_canonicalization_helpers() -> None:
+	"""Canonicalize oriented and mirror-aware hexagon patterns."""
+	assert goldberg_brick.geometry.pattern_letters(
+		(121.7, 121.7, 116.6, 121.7, 121.7, 116.6),
+		0.25,
+	) == "aabaab"
+	assert goldberg_brick.geometry.pattern_letters(
+		(121.7, 116.6, 121.7, 121.7, 116.6, 121.7),
+		0.25,
+	) == "abaaba"
+	assert goldberg_brick.geometry.canonical_pattern("baabaa") == "aabaab"
+	assert goldberg_brick.geometry.canonical_unoriented_pattern("abaaba") == "aabaab"

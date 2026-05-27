@@ -12,6 +12,9 @@
 - Added spherical representative geometry measurements for each hexagon orbit, including side
   lengths, internal angles, planarity error, and dihedral angles.
 - Added builder-facing pattern summaries and reuse groups derived from measured geometry.
+- Added letter-based angle, side, and dihedral pattern codes with oriented and mirror-aware
+  canonical forms.
+- Simplified report tables by hiding redundant mirror-aware pattern columns unless they differ.
 
 ### Behavior or Interface Changes
 

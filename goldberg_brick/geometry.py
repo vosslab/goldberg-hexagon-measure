@@ -27,8 +27,12 @@ class BuilderSummary:
 	"""Builder-facing interpretation of measured hexagon geometry."""
 
 	orbit_id: str
-	angle_pattern_code: str
-	side_pattern_code: str
+	angle_pattern: str
+	angle_pattern_unoriented: str
+	side_pattern: str
+	side_pattern_unoriented: str
+	dihedral_pattern: str
+	dihedral_pattern_unoriented: str
 	warp_mode: str
 	orientation: str
 	difficulty: str
@@ -404,10 +408,10 @@ def max_angle_deviation(values: tuple[float, ...]) -> float:
 
 
 #============================================
-def pattern_code(values: tuple[float, ...], tolerance: float) -> str:
-	"""Return first-seen cluster code for a six-value sequence."""
+def pattern_letters(values: tuple[float, ...], tolerance: float) -> str:
+	"""Return first-seen letter clusters for a six-value sequence."""
 	clusters: list[float] = []
-	digits = []
+	letters = []
 	for value in values:
 		matched_index = -1
 		for index, center in enumerate(clusters):
@@ -417,9 +421,35 @@ def pattern_code(values: tuple[float, ...], tolerance: float) -> str:
 		if matched_index == -1:
 			clusters.append(value)
 			matched_index = len(clusters) - 1
-		digits.append(str(matched_index + 1))
-	code = "".join(digits)
-	return code
+		letters.append(chr(ord("a") + matched_index))
+	pattern = "".join(letters)
+	return pattern
+
+
+#============================================
+def pattern_rotations(pattern: str) -> list[str]:
+	"""Return all cyclic rotations of a pattern string."""
+	rotations = []
+	for index in range(len(pattern)):
+		rotations.append(pattern[index:] + pattern[:index])
+	return rotations
+
+
+#============================================
+def canonical_pattern(pattern: str) -> str:
+	"""Return the lexicographically smallest cyclic rotation."""
+	canonical = min(pattern_rotations(pattern))
+	return canonical
+
+
+#============================================
+def canonical_unoriented_pattern(pattern: str) -> str:
+	"""Return the smallest cyclic pattern across both orientations."""
+	reversed_pattern = "".join(reversed(pattern))
+	all_patterns = pattern_rotations(pattern)
+	all_patterns.extend(pattern_rotations(reversed_pattern))
+	canonical = min(all_patterns)
+	return canonical
 
 
 #============================================
@@ -435,13 +465,13 @@ def classify_planarity(planarity_error: float) -> str:
 
 
 #============================================
-def classify_warp_mode(planarity_status: str, angle_code: str) -> str:
+def classify_warp_mode(planarity_status: str, angle_pattern: str) -> str:
 	"""Classify broad warp mode from planarity and angle pattern."""
 	if planarity_status == "planar":
 		mode = "nearly planar"
-	elif angle_code == "122122":
+	elif angle_pattern == "abbabb":
 		mode = "boat-like"
-	elif angle_code == "121212":
+	elif angle_pattern == "ababab":
 		mode = "chair-like"
 	elif planarity_status == "slightly warped":
 		mode = "low asymmetric warp"
@@ -483,11 +513,11 @@ def classify_difficulty(
 
 
 #============================================
-def describe_shape(angle_code: str, side_code: str, difficulty: str) -> str:
+def describe_shape(angle_pattern: str, side_pattern: str, difficulty: str) -> str:
 	"""Build a compact shape summary."""
-	if angle_code == "111111" and side_code == "111111":
+	if angle_pattern == "aaaaaa" and side_pattern == "aaaaaa":
 		summary = "regular-like repeated pattern"
-	elif angle_code[:3] == angle_code[3:] and side_code[:3] == side_code[3:]:
+	elif angle_pattern[:3] == angle_pattern[3:] and side_pattern[:3] == side_pattern[3:]:
 		summary = "repeating 3-position pattern"
 	elif difficulty == "hard":
 		summary = "high distortion pattern"
@@ -539,19 +569,30 @@ def compute_builder_summaries(
 		angle_deviation = round(max_angle_deviation(geometry.angle_sequence), 2)
 		dihedral = round(sequence_spread(geometry.dihedral_angle_sequence), 2)
 		planarity = classify_planarity(geometry.planarity_error)
-		angle_code = pattern_code(geometry.angle_sequence, 0.75)
+		angle_raw = pattern_letters(geometry.angle_sequence, 0.25)
+		angle_pattern = canonical_pattern(angle_raw)
+		angle_pattern_unoriented = canonical_unoriented_pattern(angle_raw)
 		mean_side = mean(geometry.side_length_sequence)
-		side_code = pattern_code(geometry.side_length_sequence, mean_side * 0.015)
-		warp_mode = classify_warp_mode(planarity, angle_code)
+		side_raw = pattern_letters(geometry.side_length_sequence, mean_side * 0.015)
+		side_pattern = canonical_pattern(side_raw)
+		side_pattern_unoriented = canonical_unoriented_pattern(side_raw)
+		dihedral_raw = pattern_letters(geometry.dihedral_angle_sequence, 0.25)
+		dihedral_pattern = canonical_pattern(dihedral_raw)
+		dihedral_pattern_unoriented = canonical_unoriented_pattern(dihedral_raw)
+		warp_mode = classify_warp_mode(planarity, angle_pattern)
 		difficulty = classify_difficulty(side_spread, angle_deviation, dihedral, planarity)
 		summaries[orbit_id] = BuilderSummary(
 			orbit_id=orbit_id,
-			angle_pattern_code=angle_code,
-			side_pattern_code=side_code,
+			angle_pattern=angle_pattern,
+			angle_pattern_unoriented=angle_pattern_unoriented,
+			side_pattern=side_pattern,
+			side_pattern_unoriented=side_pattern_unoriented,
+			dihedral_pattern=dihedral_pattern,
+			dihedral_pattern_unoriented=dihedral_pattern_unoriented,
 			warp_mode=warp_mode,
 			orientation=orientation,
 			difficulty=difficulty,
-			shape_summary=describe_shape(angle_code, side_code, difficulty),
+			shape_summary=describe_shape(angle_pattern, side_pattern, difficulty),
 			max_angle_deviation=angle_deviation,
 			side_length_spread_percent=side_spread,
 			dihedral_spread=dihedral,

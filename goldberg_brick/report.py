@@ -65,20 +65,27 @@ def render_markdown_report(
 		"",
 		"## Builder pattern summary",
 		"",
-		"| orbit | count | angle pattern | side pattern | warp mode | orientation | difficulty | shape summary | max angle deviation | side spread | planarity | dihedral spread | suggested use |",
-		"|---|---:|---|---|---|---|---|---|---:|---:|---|---:|---|",
+		"| orbit | count | angle pattern | side pattern | dihedral pattern | warp mode | orientation | difficulty | shape summary | max angle deviation | side spread | planarity | dihedral spread | suggested use |",
+		"|---|---:|---|---|---|---|---|---|---|---:|---:|---|---:|---|",
 	]
 	for orbit in hexagon_orbits:
 		summary = builder_summaries[orbit.orbit_id]
 		lines.append(
 			f"| {orbit.orbit_id} | {orbit.face_count} | "
-			f"{summary.angle_pattern_code} | {summary.side_pattern_code} | "
-			f"{summary.warp_mode} | {summary.orientation} | "
+			f"{summary.angle_pattern} | {summary.side_pattern} | "
+			f"{summary.dihedral_pattern} | {summary.warp_mode} | {summary.orientation} | "
 			f"{summary.difficulty} | {summary.shape_summary} | "
 			f"{summary.max_angle_deviation:.2f} deg | "
 			f"{summary.side_length_spread_percent:.2f}% | {summary.planarity_status} | "
 			f"{summary.dihedral_spread:.2f} deg | {summary.suggested_use} |"
 		)
+	mirror_notes = build_mirror_notes(hexagon_orbits, builder_summaries)
+	if mirror_notes:
+		lines.extend([
+			"",
+			"Mirror pattern notes:",
+		])
+		lines.extend(mirror_notes)
 	lines.extend([
 		"",
 		"## Reuse groups",
@@ -99,13 +106,15 @@ def render_markdown_report(
 		"",
 		"## Raw hexagon geometry",
 		"",
-		"| orbit_id | face_count | mirror_orbit | side_length_sequence | angle_sequence | planarity_error | dihedral_angle_sequence | deformation_mode | brick_strategy |",
-		"|---|---:|---|---|---|---:|---|---|---|",
+		"| orbit_id | face_count | mirror_orbit | angle_pattern | side_pattern | dihedral_pattern | side_length_sequence | angle_sequence | planarity_error | dihedral_angle_sequence | deformation_mode | brick_strategy |",
+		"|---|---:|---|---|---|---|---|---|---:|---|---|---|",
 	])
 	for orbit in hexagon_orbits:
 		geometry = hexagon_geometries[orbit.orbit_id]
+		summary = builder_summaries[orbit.orbit_id]
 		lines.append(
 			f"| {orbit.orbit_id} | {orbit.face_count} | {orbit.mirror_orbit} | "
+			f"{summary.angle_pattern} | {summary.side_pattern} | {summary.dihedral_pattern} | "
 			f"{format_sequence(geometry.side_length_sequence)} | "
 			f"{format_sequence(geometry.angle_sequence)} | "
 			f"{geometry.planarity_error:.9f} | "
@@ -128,6 +137,28 @@ def write_markdown_report(
 	text = render_markdown_report(graph, hexagon_orbits, hexagon_geometries, model)
 	with open(output_path, "w", encoding="utf-8") as handle:
 		handle.write(text)
+
+
+#============================================
+def build_mirror_notes(
+	hexagon_orbits: tuple[goldberg_brick.orbits.HexagonOrbit, ...],
+	builder_summaries: dict[str, goldberg_brick.geometry.BuilderSummary],
+) -> list[str]:
+	"""Build notes for any pattern whose mirror-aware form differs."""
+	notes = []
+	for orbit in hexagon_orbits:
+		summary = builder_summaries[orbit.orbit_id]
+		differences = []
+		if summary.angle_pattern != summary.angle_pattern_unoriented:
+			differences.append(f"angle {summary.angle_pattern_unoriented}")
+		if summary.side_pattern != summary.side_pattern_unoriented:
+			differences.append(f"side {summary.side_pattern_unoriented}")
+		if summary.dihedral_pattern != summary.dihedral_pattern_unoriented:
+			differences.append(f"dihedral {summary.dihedral_pattern_unoriented}")
+		if differences:
+			note = f"- {orbit.orbit_id} mirror-aware patterns: " + ", ".join(differences)
+			notes.append(note)
+	return notes
 
 
 #============================================

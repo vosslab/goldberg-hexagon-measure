@@ -52,7 +52,10 @@ def test_report_contains_required_gp_4_2_lines() -> None:
 	assert "## Raw hexagon geometry" in report_text
 	assert "| H001 |" in report_text
 	assert "angle pattern" in report_text
+	assert "angle_pattern_unoriented" not in report_text
 	assert "side pattern" in report_text
+	assert "dihedral_pattern" in report_text
+	assert "dihedral_pattern_unoriented" not in report_text
 	assert "suggested use" in report_text
 	assert "side_length_sequence" in report_text
 	assert "planarity_error" in report_text
@@ -61,14 +64,17 @@ def test_report_contains_required_gp_4_2_lines() -> None:
 		if not line.startswith("| H") or "side_length_sequence" not in report_text:
 			continue
 		cells = [cell.strip() for cell in line.strip("|").split("|")]
-		if len(cells) != 9:
+		if len(cells) != 12:
 			continue
 		assert cells[3] != "NA"
 		assert cells[4] != "NA"
 		assert cells[5] != "NA"
 		assert cells[6] != "NA"
-		assert cells[7] == "NA"
-		assert cells[8] == "NA"
+		assert cells[7] != "NA"
+		assert cells[8] != "NA"
+		assert cells[9] != "NA"
+		assert cells[10] == "NA"
+		assert cells[11] == "NA"
 
 
 #============================================

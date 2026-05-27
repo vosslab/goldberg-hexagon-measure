@@ -30,6 +30,8 @@ The first version writes one Markdown report with:
 The report computes `side_length_sequence`, `angle_sequence`, `planarity_error`, and
 `dihedral_angle_sequence` under a simple spherical projection model.
 It also derives angle and side pattern codes, difficulty, warp mode, and cautious suggested use.
+Pattern codes are letter-based and rotation-canonical. Mirror-aware pattern notes appear only
+when they differ from the oriented pattern.
 Interpretive fields remain `NA` until measured geometry is trustworthy:
 `deformation_mode` and `brick_strategy`.
 No CSV, JSON, SVG, OBJ, PDF, or HTML export exists yet.
