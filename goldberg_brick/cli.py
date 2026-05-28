@@ -46,6 +46,36 @@ def parse_args() -> argparse.Namespace:
 
 
 #============================================
+def validate_indices(h: int, k: int) -> None:
+	"""Enforce canonical ordering h >= k for Goldberg indices.
+
+	Class III GP(h,k) and GP(k,h) are mirror enantiomers. Silently swapping
+	would hide chirality and produce misleading reports, so the CLI refuses
+	non-canonical input and instructs the user to re-run with the swapped
+	indices.
+	"""
+	# h and k must be non-negative integers; both zero is the degenerate case.
+	if h < 0 or k < 0:
+		sys.stderr.write(
+			f"ERROR: Goldberg indices must be non-negative. Got h={h}, k={k}.\n"
+		)
+		raise SystemExit(2)
+	if h == 0 and k == 0:
+		sys.stderr.write(
+			"ERROR: Goldberg indices cannot both be zero.\n"
+		)
+		raise SystemExit(2)
+	# Enforce canonical ordering; silent normalization would hide chirality.
+	if k > h:
+		sys.stderr.write(
+			"ERROR: Goldberg indices must use canonical order h >= k.\n"
+			f"GP({h},{k}) is the mirror of GP({k},{h}). "
+			f"Re-run with -H {k} -K {h}.\n"
+		)
+		raise SystemExit(2)
+
+
+#============================================
 def build_report(
 	output_path: str,
 	h: int,
@@ -67,7 +97,8 @@ def build_report(
 		sys.stderr.write(
 			f"ERROR: The current equilateral solver does not converge for GP({h},{k}).\n"
 			f"Details: {exc}\n"
-			"See docs/GP_EQUILATERAL_CONVERGENCE.md for evidence.\n"
+			"Stage A (edge_stddev < 1e-7) is the hard gate; any failure here\n"
+			"indicates a solver bug rather than a known-nonconvergent case.\n"
 		)
 		raise SystemExit(2)
 	print("Building geodesic triangulation graph.")
@@ -103,6 +134,7 @@ def build_report(
 def main() -> None:
 	"""Run the command-line interface."""
 	args = parse_args()
+	validate_indices(args.h, args.k)
 	output_path = args.output_path
 	if output_path is None:
 		output_path = default_output_path(args.h, args.k)

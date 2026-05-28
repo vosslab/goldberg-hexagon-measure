@@ -57,6 +57,43 @@ def build_orbit_for_source(
 
 
 #============================================
+def pentagon_adjacent_hex_orbits(
+	graph: goldberg_brick.dual.GoldbergGraph,
+) -> tuple[str, ...]:
+	"""Return orbit IDs of hexagons sharing an edge with a pentagon face.
+
+	Used by the Schein-Gayed C16 chiral perimeter reduction: the perimeter
+	angles a, b live on hex faces that touch a pentagon. Reuses the dual
+	graph adjacency built in goldberg_brick.dual.
+	"""
+	# Find face IDs of all pentagons.
+	pentagon_face_ids = set()
+	for face in graph.faces:
+		if face.face_type == "pentagon":
+			pentagon_face_ids.add(face.face_id)
+	# Find hexagon faces adjacent to any pentagon.
+	pent_adjacent_hex_face_ids = set()
+	for face in graph.faces:
+		if face.face_type != "hexagon":
+			continue
+		neighbors = graph.adjacency[face.face_id]
+		for neighbor_id in neighbors:
+			if neighbor_id in pentagon_face_ids:
+				pent_adjacent_hex_face_ids.add(face.face_id)
+				break
+	# Group all hexagons into orbits and pick those that contain any
+	# pent-adjacent hex face.
+	hex_orbits = group_hexagon_orbits(graph)
+	result_orbit_ids = []
+	for orbit in hex_orbits:
+		for face_id in orbit.faces:
+			if face_id in pent_adjacent_hex_face_ids:
+				result_orbit_ids.append(orbit.orbit_id)
+				break
+	return tuple(result_orbit_ids)
+
+
+#============================================
 def group_hexagon_orbits(graph: goldberg_brick.dual.GoldbergGraph) -> tuple[HexagonOrbit, ...]:
 	"""Group Goldberg hexagon faces by orientation-preserving rotations."""
 	goldberg_brick.dual.validate_goldberg_counts(graph)

@@ -4,6 +4,28 @@
 
 ### Behavior or Interface Changes
 
+- Enforced canonical Goldberg index ordering `h >= k` at the CLI boundary.
+  `goldberg_brick.cli.validate_indices` rejects non-canonical input
+  (`k > h`), negative indices, and the degenerate `GP(0,0)` with a
+  non-zero exit code. For `k > h` the error message names the mirror
+  enantiomer and instructs re-running with the swapped indices, so
+  chirality is never silently normalized. Library-level
+  `force_attempt_solve(h, k)` still accepts either ordering so mirror
+  invariants can be verified numerically.
+- Implemented the Schein-Gayed 2014 C16 chiral perimeter reduction
+  (`b = a` around 5gon perimeter) for Class III Goldberg cages
+  (`h != k`, `h, k > 0`). Added `goldberg_brick.equilateral.build_pent_perimeter_specs`
+  and a new `pent_perimeter_specs` argument on `compute_residuals` that
+  emits one `cos(angle_b) - cos(angle_a) = 0` residual per pentagon
+  whenever Stage B (DAD-weighted) is active. With this reduction in
+  place GP(4,2) Stage B now reaches `warp_mode = planar` and
+  `planarity_error < 1e-7` on every hexagon orbit; GP(2,4) (mirror)
+  matches GP(4,2) per-orbit angle and side multisets within 1e-6.
+  GP(2,1) hex angles match Schein-Gayed Table 1 (T=7) to 1 decimal
+  place: 124.2, 124.2, 131.1, 108.2, 117.5, 114.7 degrees.
+- Added `goldberg_brick.orbits.pentagon_adjacent_hex_orbits(graph)`
+  helper returning orbit IDs of hexagons sharing an edge with a
+  pentagon face, reusing dual graph adjacency from `goldberg_brick.dual`.
 - Refactored `goldberg_brick.equilateral.force_attempt_solve` into a
   two-stage solver. Stage A (globally-equilateral; edge_stddev < 1e-7)
   is the hard gate; Stage B (planarity plus DAD nulling) is a soft
@@ -32,6 +54,15 @@
 
 ### Fixes and Maintenance
 
+- Added `tests/test_cli_index_validation.py` exercising the four
+  `validate_indices` branches (canonical pass, `k > h` reject,
+  negative reject, both-zero reject).
+- Recreated `tests/test_equilateral_validation.py` with four pytest
+  cases covering: Stage A convergence across seven baseline (h,k)
+  cases; GP(4,2) `warp_mode == planar` and `planarity_error < 1e-7`
+  per hex orbit (C16 reduction regression check); GP(2,1) angle
+  match to Schein-Gayed Table 1; and GP(4,2) vs GP(2,4) mirror
+  geometry agreement within 1e-6.
 - Updated `tests/test_equilateral_validation.py` to assert every
   supported (h,k) writes a report and that GP(4,2) reports carry a
   warp_mode label. Removed the refusal-on-known-nonconvergent test

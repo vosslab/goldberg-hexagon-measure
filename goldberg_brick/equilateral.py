@@ -242,6 +242,78 @@ def build_dad_edge_specs(
 
 
 #============================================
+def build_pent_perimeter_specs(
+	graph: goldberg_brick.dual.GoldbergGraph,
+	face_orderings: dict,
+) -> tuple:
+	"""Build Schein-Gayed C16 perimeter-angle specs (chiral b = a reduction).
+
+	For each pentagon face, locate one pent-edge (v_i, v_{i+1}) and the
+	adjacent hexagon. Inside that hexagon return the (prev, vid, next)
+	triples that let _face_angle_cos evaluate angle_a at v_i and angle_b
+	at v_{i+1} (the two hexagon internal angles around the pentagon
+	perimeter at this pent-edge). The C16 reduction sets angle_b = angle_a.
+
+	One spec per pentagon. Under icosahedral symmetry all 12 pentagons are
+	equivalent, so the 12 emitted residuals are symmetry-redundant copies
+	of the same constraint; the LM solver handles the redundancy.
+	"""
+	# face_id -> ordered tuple of vertex IDs around the face
+	# Build vertex set per face for quick adjacency tests.
+	face_vertex_sets = {}
+	for face_id, ordering in face_orderings.items():
+		face_vertex_sets[face_id] = frozenset(ordering)
+
+	# Map face_id -> face_type for the hexagon filter.
+	face_type_by_id = {face.face_id: face.face_type for face in graph.faces}
+
+	specs = []
+	for face in graph.faces:
+		if face.face_type != "pentagon":
+			continue
+		pent_ordering = face_orderings[face.face_id]
+		# Use the first pent-edge (v0, v1); any edge works under C5 symmetry.
+		v_i = pent_ordering[0]
+		v_next = pent_ordering[1]
+		# Locate the adjacent hexagon: the hex containing both v_i and v_next.
+		adjacent_hex_id = None
+		for neighbor_id in graph.adjacency[face.face_id]:
+			if face_type_by_id[neighbor_id] != "hexagon":
+				continue
+			hex_verts = face_vertex_sets[neighbor_id]
+			if v_i in hex_verts and v_next in hex_verts:
+				adjacent_hex_id = neighbor_id
+				break
+		if adjacent_hex_id is None:
+			# Dodecahedron case (GP(1,0)): pentagons share edges only with
+			# pentagons. C16 reduction does not apply; skip silently.
+			continue
+		hex_ordering = face_orderings[adjacent_hex_id]
+		n_hex = len(hex_ordering)
+		# Find positions of v_i and v_next inside the hex ordering.
+		pos_i = hex_ordering.index(v_i)
+		pos_next = hex_ordering.index(v_next)
+		# The hex neighbor of v_i opposite v_next (i.e., the other adjacent
+		# hex vertex), which together with v_next bounds the internal angle
+		# at v_i.
+		if hex_ordering[(pos_i + 1) % n_hex] == v_next:
+			u_a = hex_ordering[(pos_i - 1) % n_hex]
+		else:
+			u_a = hex_ordering[(pos_i + 1) % n_hex]
+		# Same logic for v_next: neighbor opposite v_i.
+		if hex_ordering[(pos_next + 1) % n_hex] == v_i:
+			u_b = hex_ordering[(pos_next - 1) % n_hex]
+		else:
+			u_b = hex_ordering[(pos_next + 1) % n_hex]
+		# Spec for cos(angle_a) at v_i: neighbors are u_a and v_next.
+		cos_a_spec = (u_a, v_i, v_next)
+		# Spec for cos(angle_b) at v_next: neighbors are v_i and u_b.
+		cos_b_spec = (v_i, v_next, u_b)
+		specs.append((cos_a_spec, cos_b_spec))
+	return tuple(specs)
+
+
+#============================================
 def _face_angle_cos(positions, prev_id, vid, next_id):
 	"""Return cos(internal angle at vid) given prev/next neighbors in the face.
 
@@ -299,6 +371,7 @@ def compute_residuals(
 	dad_specs: tuple = (),
 	dad_weight: float = 0.0,
 	face_orderings: dict | None = None,
+	pent_perimeter_specs: tuple = (),
 ) -> list[float]:
 	"""Compute edge equilaterality, planarity, and optional DAD residuals."""
 	residuals = []
@@ -317,6 +390,22 @@ def compute_residuals(
 			cos_d1 = _cos_dihedral_at_endpoint(positions, endpoint_specs[0])
 			cos_d2 = _cos_dihedral_at_endpoint(positions, endpoint_specs[1])
 			residuals.append(dad_weight * (cos_d1 - cos_d2))
+
+	# Schein-Gayed C16 chiral perimeter reduction: b = a around 5gon perimeter.
+	# Class III only: h != k and h > 0 and k > 0 (chiral cages).
+	# One residual per pentagon (12 redundant copies under icosahedral symmetry).
+	index_data = mesh.index_data
+	if (
+		pent_perimeter_specs
+		and dad_weight > 0.0
+		and index_data.h != index_data.k
+		and index_data.h > 0
+		and index_data.k > 0
+	):
+		for cos_a_spec, cos_b_spec in pent_perimeter_specs:
+			cos_a = _face_angle_cos(positions, *cos_a_spec)
+			cos_b = _face_angle_cos(positions, *cos_b_spec)
+			residuals.append(dad_weight * (cos_b - cos_a))
 
 	if not include_planarity:
 		return residuals
@@ -475,6 +564,9 @@ def force_attempt_solve(
 	# Build DAD specifications (Schein-Gayed dihedral-angle-discrepancy nulling)
 	face_orderings = build_face_vertex_orderings(graph, mesh, incident_triangles)
 	dad_specs = build_dad_edge_specs(edges, graph, mesh, face_orderings)
+	# Schein-Gayed C16 chiral perimeter specs (b=a around 5gons); empty
+	# when not Class III (compute_residuals also guards on indices).
+	pent_perimeter_specs = build_pent_perimeter_specs(graph, face_orderings)
 
 	# Build orbits
 	orbit_map = build_rotation_orbits(mesh)
@@ -558,6 +650,7 @@ def force_attempt_solve(
 			dad_specs=dad_specs,
 			dad_weight=1.0,
 			face_orderings=face_orderings,
+			pent_perimeter_specs=pent_perimeter_specs,
 		)
 
 	# Narrow try/except (numerical solver boundary, per PYTHON_STYLE.md):

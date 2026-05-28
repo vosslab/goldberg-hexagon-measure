@@ -20,7 +20,7 @@ geometry is right; the report's wording could be clearer.
 | Siber S3: 7l vs 7d notation | report does not emit handedness suffix | Append "l" / "d" to T-number string in report.py summary |
 | Brinkmann B2: chirality iff b != 0 AND a != b | class III returned but no flag | covered by `is_chiral` above |
 | Brinkmann B4: dodecahedron mirror symmetries lost for chiral | code uses I (60) not Ih (120) -- already correct | no code change; add docstring note |
-| Brinkmann B5: canonical ordering a >= b >= 0 | CLI accepts any ordering | optional: emit warning when k > h, suggesting (k,h) input |
+| Brinkmann B5: canonical ordering a >= b >= 0 | RESOLVED 2026-05-28: CLI hard-rejects `k > h` via `goldberg_brick.cli.validate_indices`; error names the mirror enantiomer and instructs re-run | done |
 | Brinkmann B8: "Goldberg-Coxeter" = Caspar-Klug | not documented | one-line note in `goldberg_brick/__init__.py` docstring or `docs/CODE_ARCHITECTURE.md` |
 | `HexagonOrbit.mirror_orbit="NA"` always | no mirror pairing | for class III, populate `mirror_orbit` with the swapped-handedness orbit ID (currently meaningful only if we ever support running the mirror enantiomer in the same session) |
 
