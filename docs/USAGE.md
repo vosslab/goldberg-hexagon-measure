@@ -163,9 +163,7 @@ The solver runs in two stages: Stage A drives every edge to unit length
 (hard gate); Stage B refines toward planar faces (preferred, soft).
 Cases where Stage B does not converge still ship a report -- the
 hexagons are labelled `boat`, `chair`, or `asymmetric` by the warp
-classifier instead of `planar`. See
-[GP_EQUILATERAL_CONVERGENCE.md](GP_EQUILATERAL_CONVERGENCE.md) for
-the architecture and recovery strategies.
+classifier instead of `planar`.
 
 ## Supported (h,k) cases
 

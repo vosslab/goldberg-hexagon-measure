@@ -12,7 +12,7 @@ Edited by Karin Musier-Forsyth
 The structural study of icosahedral viruses has a long and impactful history in both crystallographic methodology and molecular biology. The evolution of the Protein Data Bank has
 paralleled and supported these studies providing readily accessible formats dealing with novel features associated with viral
 particle symmetries and subunit interactions. This overview describes the growth in size and complexity of icosahedral viruses
-from the Ô¨Årst early studies of small RNA plant viruses and human
+from the i¨Årst early studies of small RNA plant viruses and human
 picornaviruses up to the larger and more complex bacterial phage,
 insect, and human disease viruses such as Zika, hepatitis B, Adeno
 and Polyoma virus. The analysis of icosahedral viral capsid protein domain folds has shown striking similarities, with the beta
@@ -37,7 +37,7 @@ structural virologists and the developers of graphics programs.
 Indeed, there has been a refreshing level of cooperation among
 a number of participants that has brought the enterprise to its
 current state of effectiveness. In this contribution the early
-developments of virus crystallography are brieÔ¨Çy presented,
+developments of virus crystallography are briei¨Çy presented,
 the progress in the ease of use of the PDB data resource for
 virologists is described, then the history of some features of
 
@@ -47,18 +47,18 @@ structural virology as documented in icosahedral virus PDB
 submissions since 1984.
 
 Early years
-Icosahedral virus structure‚Äîa short history
+Icosahedral virus structure-a short history
 The structural study of icosahedral viruses has a long and
 impactful history in propelling forward both crystallographic
 methodology and the understanding of molecular biology. In
-the 1930s, Bernal and Fankuchen made the Ô¨Årst crystallographic studies of a spherical plant virus, Tomato Bushy Stunt
+the 1930s, Bernal and Fankuchen made the i¨Årst crystallographic studies of a spherical plant virus, Tomato Bushy Stunt
 Virus (TBSV) (1). At that time, they were able to determine the
-particle size from the lattice layer lines and conclude that ‚Äúa
-body-centered cell is probable as it accords with the dodecahedral habit by Fedorov‚Äôs law.‚Äù In 1956, Crick and Watson
+particle size from the lattice layer lines and conclude that "a
+body-centered cell is probable as it accords with the dodecahedral habit by Fedorov's law." In 1956, Crick and Watson
 reasoned that the total mass of a protein shell the size of TBSV
 would necessitate many identical units to accommodate the
 limited ribonucleic acid capacity inside the shell (2). That same
-year Caspar‚Äôs diffraction studies of TBSV demonstrated that
+year Caspar's diffraction studies of TBSV demonstrated that
 the particle itself had crystallographic cubic symmetry,
 consistent with an icosahedral geometry (3). Since the icosahedron has 60 symmetrically identical positions, there must be
 60 identical building blocks in the virus. In the 1960s, Caspar
@@ -66,25 +66,25 @@ and Klug noted that since TBSV had more than 60 chemically
 identical subunits in its capsid, the same chemical entity
 (protein subunit) must be accommodated in more than one
 distinct neighborhood. Thus, they developed the concept of
-‚Äúquasi-symmetry‚Äù that hypothesized Ô¨Çexible accommodations
-of the protein subunits and used a ‚ÄúT-number‚Äù (as devised by
+"quasi-symmetry" that hypothesized i¨Çexible accommodations
+of the protein subunits and used a "T-number" (as devised by
 Buckminister Fuller for his icosahedral domes) to characterize
 the number of quasi-symmetric protein units in the icosahedral asymmetric unit (4). They could not, at the time, establish
 the structural nature of the quasi-symmetry.
-It wasn‚Äôt until the late 1970s that computers and crystallographic computing methods enabled atomic-level resolution of
-structures as large as intact virus particles. The 5.5 √Ö resolution crystal structure of TBSV, determined in 1977 in the
-Harrison Lab (5), was enabled by Ô¨Åvefold molecular averaging,
-utilizing Bricogne‚Äôs newly developed noncrystallographic
+It wasn't until the late 1970s that computers and crystallographic computing methods enabled atomic-level resolution of
+structures as large as intact virus particles. The 5.5 A resolution crystal structure of TBSV, determined in 1977 in the
+Harrison Lab (5), was enabled by i¨Åvefold molecular averaging,
+utilizing Bricogne's newly developed noncrystallographic
 symmetry (NCS) method. The structure revealed a rhombic
 triacontahedral viral capsid with 180 protein subunits with two
 domains, a shell and projecting domain with similar topological folds connected by a linker polypeptide. The structure
 showed variabilities between subunit dimers surrounding the
-Ô¨Åve (quasi -2fold) and twofold icosahedral axes, in both the
+i¨Åve (quasi -2fold) and twofold icosahedral axes, in both the
 J. Biol. Chem. (2021) 296 100554
 
 1
 
-¬© 2021 THE AUTHORS. Published by Elsevier Inc on behalf of American Society for Biochemistry and Molecular Biology. This is an open access article under the CC
+A© 2021 THE AUTHORS. Published by Elsevier Inc on behalf of American Society for Biochemistry and Molecular Biology. This is an open access article under the CC
 BY license (http://creativecommons.org/licenses/by/4.0/).
 
 JBC REVIEWS: Icosahedral viruses and the pdb
@@ -93,42 +93,42 @@ Professor of Structural Virology at The
 Scripps Research Institute, is a world leader
 in the structural biology of viruses.
 
-curvature between shell domains and orientation of the projecting dimer domains (Fig. 1). The subsequent 2.9 √Ö resolution structure of TBSV from the same lab elucidated the
+curvature between shell domains and orientation of the projecting dimer domains (Fig. 1). The subsequent 2.9 A resolution structure of TBSV from the same lab elucidated the
 atomic nature of the quasi-equivalence in this virus structure.
 It revealed ordered polypeptide strands in the interfaces between the dimers around twofold axes that were absent at the
-dimers around the Ô¨Åvefold axes, with the three ordered strands
+dimers around the i¨Åvefold axes, with the three ordered strands
 forming a beta-barrel structure at the icosahedral threefold
-axes. This structure showed that the quasi-equivalent ‚Äúaccommodations‚Äù postulated by Caspar and Klug entailed signiÔ¨Åcant morphological and topological modiÔ¨Åcations.
+axes. This structure showed that the quasi-equivalent "accommodations" postulated by Caspar and Klug entailed signii¨Åcant morphological and topological modii¨Åcations.
 First icosahedral virus coordinate deposits to the pdb
 TBSV (6) from the Harrison lab and Southern Bean Mosaic
 Virus (SBMV) in 1980 (7) from the Rossmann Lab were the
 
 Figure 1. Top, a rhombic triacontahedron depicting the T = 3 quasisymmetric quaternary structure of Tomato Bushy Stunt Virus and
-Southern Bean Mosaic Virus, the Ô¨Årst two icosahedral virus structures
-deposited in the PDB. The triangle enclosing the ‚Äúcommas‚Äù is the icosahedral asymmetric unit and a ‚Äúcomma‚Äù represents a single subunit with the
+Southern Bean Mosaic Virus, the i¨Årst two icosahedral virus structures
+deposited in the PDB. The triangle enclosing the "commas" is the icosahedral asymmetric unit and a "comma" represents a single subunit with the
 folds shown in Figure 2. They are related by an approximate q3 fold axis at
 the center of the triangle. Bottom, a side view of the icosahedral asymmetric
-unit with the particle center at the bottom of the Ô¨Ågure where the boundary
-icosahedral symmetry elements (5-3-3-5) intersect. Quasi-symmetry elements are deÔ¨Åned by vectors representing q2 and q3. Note, unlike the
+unit with the particle center at the bottom of the i¨Ågure where the boundary
+icosahedral symmetry elements (5-3-3-5) intersect. Quasi-symmetry elements are dei¨Åned by vectors representing q2 and q3. Note, unlike the
 icosahedral symmetry elements, they do not intersect at the center.
 
 2 J. Biol. Chem. (2021) 296 100554
 
-Ô¨Årst virus structures deposited in the PDB. Both of these RNA
+i¨Årst virus structures deposited in the PDB. Both of these RNA
 plant viruses have T = 3 quasi symmetry (4) The close similarity in the shell forming domain of the protein subunits in
 these two viruses was unexpected, but immediately noticed by
 Rossmann and Andrew Leslie from the chain tracing of the
 polypeptides in the electron density plotted on plexiglass
 sheets. The fold (Fig. 2) is now called the virus jelly roll topology (8). The atomic models of both TBSV and SBMV
 protein subunits (like all protein models at that time) were
-constructed with a Richards‚Äô Box (9), an invention of Fred
+constructed with a Richards' Box (9), an invention of Fred
 Richards of Yale that allowed the simultaneous viewing of
 electron density and the associated physical brass model
 employing a half-silvered mirror. The primary model builders
 of TBSV were Harrison and one of us (AJO) and the SBMV
 models were mainly built by Rossmann and Cele AbadZapatero. The physical models were translated into 3d
 coordinates by yardstick measurements to a plumb bob positioned at each atom position. As was common in the early days
-of the PDB, there was a signiÔ¨Åcant delay of the deposition of
+of the PDB, there was a signii¨Åcant delay of the deposition of
 these structures; the TBSV coordinates were released in July
 1984 (2tbv) and the SBMV coordinates in October 1984 (3sbv;
 subsequently updated with 4sbv). At this time there were 175
@@ -142,15 +142,15 @@ trimers (icosahedral asymmetric units) were deposited. SBMV
 crystallized in a rhombohedral space group with the particle
 center at a 23 symmetry site implying 2 pentamers of trimers
 in the crystallographic asymmetric unit and 30 subunit coordinate sets deposited. Since NCS was critical in phase determination and improvement, it was noteworthy that TBSV had
-Ô¨Åvefold NCS and SBMV tenfold NCS. This speciÔ¨Åed that the
+i¨Åvefold NCS and SBMV tenfold NCS. This specii¨Åed that the
 SBMV crystal form had 1.4 times the phase improvement
 power of the TBSV crystal form since phase enhancement goes
 as the square root of the NCS.
-Both structure determinations required numerous personyears of effort (TBSV; 1968‚Äì1978, SBMV; 1972‚Äì1980) and in
-the end there were two Nature papers (6, 7) with state-ofthe-art Ô¨Ågures for virologists to ponder. The reaction to
+Both structure determinations required numerous personyears of effort (TBSV; 1968-1978, SBMV; 1972-1980) and in
+the end there were two Nature papers (6, 7) with state-ofthe-art i¨Ågures for virologists to ponder. The reaction to
 the work was respectful, but the vast majority of virologists
 had no idea how to use this information. The problem was
-manifold; Ô¨Årst, outside of the crystallography community,
+manifold; i¨Årst, outside of the crystallography community,
 there were few investigators that knew what to do with a set
 of coordinates and there were no widely available computer
 graphics instruments or programs except for those that
@@ -164,34 +164,34 @@ particle and SBMV represented 1/6 of the particle. Operating
 
 JBC REVIEWS: Icosahedral viruses and the pdb
 
-Figure 2. Southern Bean Mosaic Virus (SBMV) (top) and Tomato Bushy Stunt Virus (TBSV) (bottom) were the Ô¨Årst icosahedral virus structure
+Figure 2. Southern Bean Mosaic Virus (SBMV) (top) and Tomato Bushy Stunt Virus (TBSV) (bottom) were the i¨Årst icosahedral virus structure
 coordinates deposited to the PDB in 1984. TBSV was determined in 1978 (6) and SBMV in 1980 (7). Unexpectedly the shell forming domains of both the
 virus subunits were closely similar and formed what is now known as the virus jellyroll topology. TBSV has an additional C-terminal domain that forms
 prominent dimers on the capsid surface.
 
 on the deposited coordinates with the appropriate crystallographic symmetry operators to generate an intact particle
 was challenging even for crystallographers (including those
-that deposited the coordinates!). As a result, the Ô¨Årst structures did not have an immediate impact for those that were
+that deposited the coordinates!). As a result, the i¨Årst structures did not have an immediate impact for those that were
 not well versed in the matrices of the icosahedral point
 group.
 Translating virus coordinates into useful 3d graphics was
-Ô¨Årst accomplished by one of us (AJO) with TBSV along with
+i¨Årst accomplished by one of us (AJO) with TBSV along with
 other efforts in the use computer graphics to generate 3d
 models of viruses. A narrative history of the development of
-the Ô¨Årst 3d tour of a virus particle as well as other virus animations is provided in Box 1. It has been exciting to see how
+the i¨Årst 3d tour of a virus particle as well as other virus animations is provided in Box 1. It has been exciting to see how
 these efforts have been mirrored by what is now possible for
 individuals on a desktop computer decades later. The movie
 provided a readily understandable description of the importance of the pioneering virus structures and their relevance for
 virology.
 Human icosahedral virus structures
 The ssRNA picornaviruses, Poliovirus (PV) (11) and Human
-Rhinovirus (HRV) (12), were reported at 2.9 √Ö resolution in
+Rhinovirus (HRV) (12), were reported at 2.9 A resolution in
 1985. The years between the plant virus structures and these
 animal virus structures saw remarkable advances in the
 
 availability of synchrotron X-ray radiation, computer graphics,
 and high-performance supercomputers. Access to these technologies reduced the time required to determine virus structures as well as dramatically improving the ease of modeling
-protein structures and reÔ¨Åning the coordinates. These virus
+protein structures and rei¨Åning the coordinates. These virus
 models were of good quality and of high impact for virology.
 They provided important insights for virus evolution, immunology, and pathology and lead to mechanistic understanding
 of a class of antiviral agents. The PV and HRV structures were
@@ -213,67 +213,67 @@ J. Biol. Chem. (2021) 296 100554
 3
 
 JBC REVIEWS: Icosahedral viruses and the pdb
-Box 1. Personal reÔ¨Çections on computer graphics and animation of virus structures by Arthur J. Olson
+Box 1. Personal rei¨Çections on computer graphics and animation of virus structures by Arthur J. Olson
 The Harrison Lab acquired an Evans & Southerland (E&S) Multi Picture System (MPS) in 1978. This new technology embodied a monochrome
 vector-based display capable of addressing the equivalent of 8000X8000 pixels and a 3D graphics processor that enabled interactive manipulations of
 complex 3D structures. Because at the time there were no suitable molecular modeling programs, by substituting molecules for buildings, I hacked a
-demo Fortran program from E &S called ‚ÄúArchitecture,‚Äù which enabled manipulation of wireframe models of buildings. I could then read in the molecular
+demo Fortran program from E &S called "Architecture," which enabled manipulation of wireframe models of buildings. I could then read in the molecular
 coordinates of the three distinct subunits of Tomato Bushy Stunt Virus (TBSV) as well as produce geometric icosahedral models. We were then able to
 see and interact with a complete virion at atomic resolution and get a new perspective on the nature of quasi-equivalence, as postulated by Caspar and
 Klug (4). I was enamored with the new device and wanted to show a wider audience what we had seen. Since we had no way of capturing our interactions
 with the structure, we borrowed reel-to-reel video tape recorder and camera and shot some ad hoc manipulations. It was hardly a great success since we
-could only capture live interaction. I only showed it a couple of times outside of Harrison‚Äôs Harvard lab.
+could only capture live interaction. I only showed it a couple of times outside of Harrison's Harvard lab.
 In September of 1979, I moved from my post-doc position in the Harrison Lab to Lawrence Berkeley Lab to join the newly formed National Resource
 for Computation in Chemistry (NRCC). I joined as the Staff Scientist in charge of crystallographic computing. I was able to hire a talented post-doc, TJ
-O‚ÄôDonnell, who was also very interested in computer graphics, having worked on creating the Death Star for the Ô¨Årst Star Wars movie. I was able to
+O'Donnell, who was also very interested in computer graphics, having worked on creating the Death Star for the i¨Årst Star Wars movie. I was able to
 acquire the same model E&S system that I had been using at Harvard. Together TJ and I designed and developed a general-purpose interactive graphics
 interpreter in Fortran that we called GRAMPS (Graphics for the Multi-Picture System). In its design, we included a number of animation capabilities, as
 well as enabling the types of symmetry manipulations that would be useful for molecular complexes. Key to the utility of GRAMPS was the ability to
 assign objects to input devices (like the multi-dial box that came with the system) and transform objects interactively) (76).
 At the top of my mind was the making of a computer-generated animation explaining the TBSV structure by showing the viral capsid atomic structure,
-its symmetry, and conÔ¨Ågurational changes. With GRAMPS, this became possible. I bought a Bolex 16 mm movie camera and wired its single-frame
+its symmetry, and coni¨Ågurational changes. With GRAMPS, this became possible. I bought a Bolex 16 mm movie camera and wired its single-frame
 mechanism to the keyboard terminal bell, which we could activate through a GRAMPS command.
 Because the software language and manual manipulations were interactively interpreted, an animation script could be written as it was being
-developed, and the timing of events could be adjusted interactively. Once a script was completed, it could be played back on the E&S display and Ô¨Ålmed
-frame by frame. Using this approach, the resulting TBSV 16 mm Ô¨Ålm was one continuous scene with no Ô¨Ålm edits. The Ô¨Årst recorded version was
+developed, and the timing of events could be adjusted interactively. Once a script was completed, it could be played back on the E&S display and i¨Ålmed
+frame by frame. Using this approach, the resulting TBSV 16 mm i¨Ålm was one continuous scene with no i¨Ålm edits. The i¨Årst recorded version was
 monochrome with white vector lines on a phosphor screen. Subsequently we were able to borrow a new color MPS from Evans and Southerland and run
-the script again, with color commands inserted, which made a signiÔ¨Åcant difference in distinguishing the three distinct subunits.
-The animated 16 mm Ô¨Ålm called ‚ÄúTBSV,‚Äù produced at the NRCC, was widely seen in the 1980s into 1990s. It was Ô¨Årst shown at the Association for
+the script again, with color commands inserted, which made a signii¨Åcant difference in distinguishing the three distinct subunits.
+The animated 16 mm i¨Ålm called "TBSV," produced at the NRCC, was widely seen in the 1980s into 1990s. It was i¨Årst shown at the Association for
 Computing Machinery (ACM) Siggraph Conference in 1981 to a computer graphics crowd. I had added an accompanying piano soundtrack of Scott
-Joplin Rags (Maple Leaf Rag and The Entertainer) as a nod to the early silent movies. ‚ÄúTBSV‚Äù along with my contemporaneous CG animation ‚ÄúADAM-a
-Dial Activated Man‚Äù got a very positive response. Subsequently showing the Ô¨Ålm around on talks about the virus structure, I started to get a number of
+Joplin Rags (Maple Leaf Rag and The Entertainer) as a nod to the early silent movies. "TBSV" along with my contemporaneous CG animation "ADAM-a
+Dial Activated Man" got a very positive response. Subsequently showing the i¨Ålm around on talks about the virus structure, I started to get a number of
 requests for copies, and so started distributing the 16 mm copies at cost. That dropped off as 16 mm movie projectors became rare and was eventually
 substituted with an analogue video version, distributed on VHS videotape.
-The 8-min Ô¨Ålm itself was one of the Ô¨Årst of its kind, especially for molecular animation. It was the ideal medium at the time for explaining the complex
+The 8-min i¨Ålm itself was one of the i¨Årst of its kind, especially for molecular animation. It was the ideal medium at the time for explaining the complex
 and dynamic nature of viral capsids. It tells a story as a progression from the fundamental icosahedral symmetry of the capsid to the nature of quasisymmetry, showing conformational changes between the distinct subunits, in assembly and swelling. The E&S graphics processor was the most powerful
 at the time, but it could not display the entire atomic scale capsid, with its millions of vectors, at interactive rates. In animation mode, however, I was able
-to capture a complete pentameric subassembly, with our 16 mm animation camera. As mentioned above, the entire Ô¨Ålm is a single continuous shot, which
+to capture a complete pentameric subassembly, with our 16 mm animation camera. As mentioned above, the entire i¨Ålm is a single continuous shot, which
 keeps the viewer in context as the content and scale of the images change. With the subsequent publication of two more virus structures, Cow Pea Mosaic
-Virus (CPMV) and Satellite Tobacco Mosaic Virus (STNV), I produced another 16 mm Ô¨Ålm called ‚ÄúVirus Wars,‚Äù which compared the three structures. In
-1986, in collaboration with Jim Hogle, then at Scripps, we made 16 mm animation of his structure of the poliovirus, with Jim‚Äôs narration.
-In 1983, TBSV, the virus made another appearance on Ô¨Ålm. This time it was in an OmniMax Film produced for the Horizons Pavilion at the Disney
+Virus (CPMV) and Satellite Tobacco Mosaic Virus (STNV), I produced another 16 mm i¨Ålm called "Virus Wars," which compared the three structures. In
+1986, in collaboration with Jim Hogle, then at Scripps, we made 16 mm animation of his structure of the poliovirus, with Jim's narration.
+In 1983, TBSV, the virus made another appearance on i¨Ålm. This time it was in an OmniMax Film produced for the Horizons Pavilion at the Disney
 EPCOT Center and shown in dome projection. I created the animation for the segment on the color E&S system that I had purchased after moving to
 Scripps in late 1981. In collaboration with Nelson Max, the vector drawings were distorted so that they looked correct projected onto the Omnimax dome
 (77). The data generated from the GRAMPS script was written on 60 reels of 9in 6250bpi magnetic tape and mailed to a laser writer in Minneapolis to be
-written onto 70 mm Ô¨Ålmstock using three 70 mm frames per image.
-In the early 2000s, I had a digital copies of the original 16 mm Ô¨Ålms made. The digital versions of ‚ÄúTBSV‚Äù (https://www.youtube.com/watch?v=FhLAC_
-Ol8_0), ‚ÄúVirus Wars‚Äù (https://youtu.be/D0REwUXu50I) and ‚ÄúPoliovirus‚Äù (https://www.youtube.com/watch?v=JV2gte4o-d4&t=6s) have now been made
+written onto 70 mm i¨Ålmstock using three 70 mm frames per image.
+In the early 2000s, I had a digital copies of the original 16 mm i¨Ålms made. The digital versions of "TBSV" (https://www.youtube.com/watch?v=FhLAC_
+Ol8_0), "Virus Wars" (https://youtu.be/D0REwUXu50I) and "Poliovirus" (https://www.youtube.com/watch?v=JV2gte4o-d4&t=6s) have now been made
 available on YouTube.
 
 capsid that were closely similar for both viruses. The structures
 also suggested the location of the receptor binding site on the
-capsid as there was a deep depression near the Ô¨Åvefold axes
-referred to as the ‚Äúcanyon‚Äù that seemed like a logical place for
+capsid as there was a deep depression near the i¨Åvefold axes
+referred to as the "canyon" that seemed like a logical place for
 the receptor to make a strong interaction with the particle (16).
 Finally, the structures revealed the binding site of a known
 antiviral agent to picornaviruses (17) leading to an extensive
-structure-based drug design enterprise (18). The Ô¨Årst version
+structure-based drug design enterprise (18). The i¨Årst version
 of the HRV coordinates (2hrv) was released by the pdb in July
 1986 (subsequently replaced by 4hrv) and the PV coordinates
 (2plv) were released in October 1989.
 Virus particle explorer
 Generally speaking, virologists were not able to use the
-coordinates for their research because of the difÔ¨Åcult learning
+coordinates for their research because of the difi¨Åcult learning
 curves associated with the early graphics programs and the
 complications associated with icosahedral symmetry operators. A notable early exception was the Institute for Virology at
 the University of Wisconsin, Madison where Jean Yves Sgro
@@ -295,7 +295,7 @@ interfaces and comparable icosahedral interfaces and the
 character of the stabilizing forces determined (i.e., ionic, hydrophobic, etc.) (22). These were assembled by virus crystallographers at Purdue for coordinates in the pdb and supplied
 to virologists to develop structure-based investigations of virus
 biology. Initially this was done on an ad hoc basis, but it
-became clear that there would be a great beneÔ¨Åt to do this in a
+became clear that there would be a great benei¨Åt to do this in a
 systematic manner for all virus coordinates as they became
 
 JBC REVIEWS: Icosahedral viruses and the pdb
@@ -309,7 +309,7 @@ incorporated into the PDB and all of the virus coordinates have
 been remediated to allow straightforward generation of biologically relevant oligomers (28).
 Virus crystallography comes of age
 Figure 3. The standard orientation of an icosahedron in an orthogonal
-coordinate system deÔ¨Åned by Vijay Reddy as the ‚ÄúVIPER orientation.‚Äù
+coordinate system dei¨Åned by Vijay Reddy as the "VIPER orientation."
 When the crystallographic coordinates of an icosahedral virus particle were
 deposited to the PDB, he converted them to this orientation allowing the
 straightforward expansion to the full icosahedron through selection of the
@@ -320,7 +320,7 @@ access to any oligomer of the subunits (28).
 available. This was the start of an icosahedral virus coordinate
 database known as VIrus Particle ExploreR or VIPER that has
 been led since its inception in 1994 by Vijay Reddy with
-multiple releases over the years (23‚Äì27). Reddy developed
+multiple releases over the years (23-27). Reddy developed
 principles that were eventually formalized, and these allowed
 the entire process from coordinate deposition to creating a
 VIPER database entry to be automated. A key step facilitated
@@ -328,11 +328,11 @@ the procedure. The coordinates were converted to what is
 known as the VIPER standard orientation in an orthogonal
 coordinate system as shown in Figure 3. Once the coordinates
 
-Following the Ô¨Årst four virus structures deposited to the
+Following the i¨Årst four virus structures deposited to the
 PDB, the pace picked up (Fig. 4). By 1990, there were 18 entries, including 11 variations of HRV14 determined with
 different mutations and drugs bound to an internal pocket,
 two additional unique picornavirus structures, and a plant
-picorna-like virus. The latter showed, for the Ô¨Årst time,
+picorna-like virus. The latter showed, for the i¨Årst time,
 discernible fragments of the RNA genome within the capsid
 implying that portions of the RNA had the symmetry of the
 protein capsid (13). A striking feature of the structures
@@ -340,7 +340,7 @@ deposited to this point was their uniformity; they were all
 30 nM diameter formed by 180 subunits that all displayed
 the jellyroll fold.
 A variety of technology advances resulted in 59 virus entries
-by 1995. The Ô¨Årst ssDNA virus, the bacteriophage phi X 174,
+by 1995. The i¨Årst ssDNA virus, the bacteriophage phi X 174,
 was submitted in 1991 and displayed the jellyroll fold in the
 two different major gene products that formed the icosahedral
 asymmetric unit of the T = 1 particle (29). The mammalian,
@@ -355,10 +355,10 @@ J. Biol. Chem. (2021) 296 100554
 
 JBC REVIEWS: Icosahedral viruses and the pdb
 that formed a T = 1 particle (30). Black beetle virus was the
-Ô¨Årst RNA insect virus submitted to the PDB, and it displayed a
+i¨Årst RNA insect virus submitted to the PDB, and it displayed a
 structure remarkably similar to SBMV, but had an interesting
 autocatalytic maturation step that was well characterized in
-the structure (31). SigniÔ¨Åcantly the Ô¨Årst virus with a subunit
+the structure (31). Signii¨Åcantly the i¨Årst virus with a subunit
 that did not have a jellyroll fold, the RNA bacteriophage MS2,
 was submitted in this time frame (32) as well as dsDNA tumor
 viruses with T = 7l surface lattices that did not have the
@@ -379,14 +379,14 @@ interior and a protruding viral jellyroll on the outside. Interior
 and adjacent to the RNA was a T = 1 core formed by 120
 copies of a predominantly helical protein with a totally
 different fold from other viral capsid proteins. The deposition
-in 1998 set a number of records for a virus. At 700 √Ö in
+in 1998 set a number of records for a virus. At 700 A in
 diameter it was the largest virus in the PDB; it had the largest T
-number at 13; and it was the Ô¨Årst to have shells with two
+number at 13; and it was the i¨Årst to have shells with two
 different symmetries (35). Two years later the coordinates of
 the core of reovirus (36) were submitted to the PDB allowing
 comparisons of orbiviridae and reoviridae in the family
 reovirus. Insights were developing into the evolution of picornaviruses from plant viruses as structures were reported of
-putative intermediates in the process (37). The Ô¨Årst highresolution procapsid structure was reported in 1997 for Phi
+putative intermediates in the process (37). The i¨Årst highresolution procapsid structure was reported in 1997 for Phi
 X 174 (38), a particle on the maturation pathway to the infectious virus that included scaffolding proteins that guide the
 assembly of more complex viruses and are then released and
 are not present in the mature particle. The majority of other
@@ -397,22 +397,22 @@ structure-based drug design. The coordinates of an insect
 picornavirus, with a drastically different genome organization
 from human picornaviruses, were submitted in 1998, but the
 structure was recognizably similar to human picornaviruses
-albeit without the canyon and NIM sites (39). Notably the Ô¨Årst
+albeit without the canyon and NIM sites (39). Notably the i¨Årst
 coordinates employing cryoEM density were submitted in this
-time frame, but they were based on the Ô¨Åt of known, homologous, structures into low-resolution cryoEM density. They
+time frame, but they were based on the i¨Åt of known, homologous, structures into low-resolution cryoEM density. They
 were important, however, in mapping Fab fragments attached
-to picornaviruses (40) as well as receptor‚Äìpicornavirus interactions (41, 42).
+to picornaviruses (40) as well as receptor-picornavirus interactions (41, 42).
 Approximately 100 icosahedral virus structures were submitted to the PDB between 2001 and 2005. A quarter of these
-were structures based in part on cryoEM density. The ‚Äúgold
+were structures based in part on cryoEM density. The "gold
 
 6 J. Biol. Chem. (2021) 296 100554
 
-standard‚Äù in this time frame for cryoEM was sub-nanometer
+standard" in this time frame for cryoEM was sub-nanometer
 resolution structures, although many were at much lower
 resolution. The cryoEM density together with X-ray-based
-coordinates of individual capsid proteins provided the Ô¨Årst
-detailed models of Ô¨Çavi (43) and alpha viruses (44). These are
-600 √Ö, ssRNA, icosahedral, membrane-containing particles
+coordinates of individual capsid proteins provided the i¨Årst
+detailed models of i¨Çavi (43) and alpha viruses (44). These are
+600 A, ssRNA, icosahedral, membrane-containing particles
 that were refractory to high-resolution crystallography. These
 structures were high impact as the viruses cause widespread
 morbidity and mortality throughout the world. Although the
@@ -421,7 +421,7 @@ showed them to be remarkably accurate. Flavi and alphaviruses
 contain glycoproteins with a characteristic fold (45, 46) that is
 different from the viral jellyroll and that clearly relates these
 viruses at a subunit structural level. Their capsid architectures
-are, however, strikingly different with Ô¨Çaviviruses displaying a
+are, however, strikingly different with i¨Çaviviruses displaying a
 capsid with 180 subunits, which are not consistent with T = 3
 quasi-equivalence, and alphaviruses showing a classic T = 4
 quasi-equivalent capsid formed with two different, but structurally similar, glycoproteins. A second area that gained
@@ -431,7 +431,7 @@ bacteriophage particles. An atomic model of the T = 7l Hong
 Kong 97 VLP (47) demonstrated a new capsid protein fold
 (HK97-fold) that is now recognized as the canonical capsid
 protein fold for tailed, dsDNA bacteriophages and clearly relates the mammalian herpesviruses to tailed, dsDNA phage
-(48). The Ô¨Årst detailed models of these complex, dsDNA phage
+(48). The i¨Årst detailed models of these complex, dsDNA phage
 particles were also reported in this period for Phi 29 (49),
 PRD1 (50), and T4 (51). In this time frame and with highresolution capsid protein structures, it was clear that the
 dsDNA phage divided into two groups, the tailed phage with
@@ -442,16 +442,16 @@ resource for understanding virus particle evolution.
 Another 100 icosahedral virus structures were deposited
 from 2006 to 2010. The novel focus in this time frame was the
 maturation of virus particles, the study of membrane containing
-viruses, and the denovo structure determination of virus particles by cryoEM. Bacteriophage maturation was exempliÔ¨Åed by
+viruses, and the denovo structure determination of virus particles by cryoEM. Bacteriophage maturation was exemplii¨Åed by
 studies of HK97 VLPs where X-ray crystallography and cryoEM
-identiÔ¨Åed subtleties of protein subunit reorganization (52, 53)
+identii¨Åed subtleties of protein subunit reorganization (52, 53)
 and subunit refolding (54). A new level of understanding of large
 membrane-containing phage in the PRD1-adenovirus lineage
 was achieved with the moderate resolution X-ray structure of
 PM2 (55). CryoEM structures were now determined in some
 cases with no reference to X-ray subunit models with dsRNA
-cytoplasmic polyhedrosis virus determined at 3.9 √Ö (56) and
-dsDNA, tailed bacteriophage Epsilon15 determined at 4.5 √Ö
+cytoplasmic polyhedrosis virus determined at 3.9 A (56) and
+dsDNA, tailed bacteriophage Epsilon15 determined at 4.5 A
 resolution (57). The latter two structures had pushed EM to its
 limits with the existing CCD detector technology. The future of
 cryoEM was in the making during this time frame with a publication describing the direct electron detector (58), an instrument that would revolutionize structural virology and all of
@@ -460,31 +460,31 @@ The years 2011 to 2015 saw 200 icosahedral virus submissions to the PDB with mor
 
 JBC REVIEWS: Icosahedral viruses and the pdb
 either de novo structure determination or combined with
-X-ray models of particle components to generate pseudoatomic models. The time frame of 2012 saw many coordinate deposits employing cryoEM at sub 5 √Ö resolution with de
-novo structure determination. Many virus structures determined with either X-ray or cryoEM were modiÔ¨Åed versions of
+X-ray models of particle components to generate pseudoatomic models. The time frame of 2012 saw many coordinate deposits employing cryoEM at sub 5 A resolution with de
+novo structure determination. Many virus structures determined with either X-ray or cryoEM were modii¨Åed versions of
 previously deposited coordinates such as Adeno-Associated
 Virus that had a changed receptor target for gene therapy
 (59) or picornaviruses that were inactivated during vaccine
 development (60). Among the largest structures deposited to
 the PDB to that point was the 75mD sulfolobus turreted
-icosahedral virus (STIV) puriÔ¨Åed from the archea, sulfolobus,
+icosahedral virus (STIV) purii¨Åed from the archea, sulfolobus,
 in the hot springs of Yellowstone National Park. The structure
-was determined with a 4.5 √Ö cryoEM map that allowed de
-novo tracing of the major capsid protein (MCP) and Ô¨Åtting of
+was determined with a 4.5 A cryoEM map that allowed de
+novo tracing of the major capsid protein (MCP) and i¨Åtting of
 X-ray structures of two other capsid gene products (61).
-Dengue virus structures of both immature and mature particles were reported at 4.5 √Ö and 4.1 √Ö respectively (62).
+Dengue virus structures of both immature and mature particles were reported at 4.5 A and 4.1 A respectively (62).
 
 Multiple expansion intermediates of the T7 bacteriophage
-were reported with one cryoEM structure at better than 4 √Ö
-and the infectious virus at 3.5 √Ö (63)
+were reported with one cryoEM structure at better than 4 A
+and the infectious virus at 3.5 A (63)
 A total of 907 icosahedral virus model coordinates were
 submitted to the PDB by July 2020, an increase of 356 between
 2016 and 2020. Only 41 of these were determined by X-ray
 crystallography. The dominance of cryoEM for icosahedral
 virus structure determination is nearly complete. In 2013 one
-of us (JEJ) wrote an autobiographical review titled ‚ÄúConfessions of an icosahedral virus crystallographer‚Äù (64). His
-‚Äúconfession,‚Äù following a personal history of virus crystallography and the description of the cryoEM structure of STIV
-that was determined at 4.5 √Ö resolution, was that he no longer
+of us (JEJ) wrote an autobiographical review titled "Confessions of an icosahedral virus crystallographer" (64). His
+"confession," following a personal history of virus crystallography and the description of the cryoEM structure of STIV
+that was determined at 4.5 A resolution, was that he no longer
 did icosahedral virus crystallography, only cryoEM. It is
 interesting that the real moment of transition occurred in 2010
 when the structure of adenovirus was determined by X-ray
@@ -492,7 +492,7 @@ crystallography (65) and cryoEM (66) and published together
 in the journal Science. A news and views was supplied by Steve
 
 Figure 5. A selection of virus structures from the PDB, demonstrating the size range and quasi-equivalence of particles determined to near-atomic
-resolution. For each virus there is a name abbreviation, the quasi or pseudo equivalence of the capsid, the particle diameter, the pdb identiÔ¨Åer for the
+resolution. For each virus there is a name abbreviation, the quasi or pseudo equivalence of the capsid, the particle diameter, the pdb identii¨Åer for the
 coordinates, and the lineage based on the major capsid protein subunit structure; Picorna-like. Blue Tongue Virus (BTV)-like, HK97-like, PRD1-like as
 described by Abrescia et al. (75). Row1 Canine Parvo Virus, L-A virus, MS2, Norwalk Virus. Row 2 Human Rhinovirus 14, Hepatitis B virus, Chikungunya Virus,
 Nudaurelia Omega Capensis Virus. Row 3 Simian Virus 40, Hong Kong 97, Bacterial Microcompartment shell assembly, Blue Tongue Virus. Row 4 Herpes
@@ -504,12 +504,12 @@ J. Biol. Chem. (2021) 296 100554
 
 JBC REVIEWS: Icosahedral viruses and the pdb
 Harrison (67) and his opinion was that the cryoEM density was
-of higher quality. The Ô¨Ånal revised coordinates for the cryoEM
+of higher quality. The i¨Ånal revised coordinates for the cryoEM
 model were deposited in 2017 (68) and the X-ray model in
 2018 (69). Among other notable entries in this period was the
-sub 2 √Ö cryoEM structure of an adeno-associated virus particle
+sub 2 A cryoEM structure of an adeno-associated virus particle
 that took into account a variety of technical details to achieve
-1.8 √Ö resolution (70).
+1.8 A resolution (70).
 
 Conclusions
 The virus structures deposited to the PDB over the last 40
@@ -517,8 +517,8 @@ years have provided fundamental insights into virus assembly
 and maturation (71), the roles of the capsid in virus lifecycles
 (72) had a major impact on the development of particle-based
 antiviral agents (73), the immunology of virus particles (74),
-and structure-based virus classiÔ¨Åcation, contributing to proposals for virus evolution (75). A summary of structure-based
-virus classiÔ¨Åcation is a Ô¨Åtting conclusion to this article. Based
+and structure-based virus classii¨Åcation, contributing to proposals for virus evolution (75). A summary of structure-based
+virus classii¨Åcation is a i¨Åtting conclusion to this article. Based
 on MCP structures, Abrescia et al. (75) list four icosahedral
 
 viral lineages that they refer to as picorna-like (ssRNA and
@@ -527,16 +527,16 @@ PRD1-like (dsDNA viruses characterized by MCPs containing
 the double jellyroll fold), Blue Tongue virus-like (dsRNA viruses characterized by a T = 1 nucleoprotein particle with a
 dominantly alpha helical fold and, usually, an outer shell
 formed by proteins that often include a jellyroll), and HK97like (dsDNA viruses infecting bacteria and also herpesviridae). In addition to these lineages, there are the icosahedral
-enveloped lineages (ENV) comprised of alpha and Ô¨Çaviviruses that are ssRNA and contain surface glyco-proteins
-that are fusogenic and/or attachment. The Ô¨Çavi-virus glycoprotein is referred to as the E-protein and the alpha virus
+enveloped lineages (ENV) comprised of alpha and i¨Çaviviruses that are ssRNA and contain surface glyco-proteins
+that are fusogenic and/or attachment. The i¨Çavi-virus glycoprotein is referred to as the E-protein and the alpha virus
 proteins E1 and E2. Figure 5 illustrates a variety of virus
-structures in the pdb with their identiÔ¨Åer, diameter, and
+structures in the pdb with their identii¨Åer, diameter, and
 lineage. Figure 6 shows the tertiary structure folds of MCPs
 that form the capsids or glycoprotein surface of the ENV
 lineage.
 
-Figure 6. The folds employed to deÔ¨Åne the lineages of capsids in Abrescia et al. (75). For each subunit fold, the lineage is given as well as the PDB
-identiÔ¨Åer for the coordinates used to generate the speciÔ¨Åc fold. The folds for the enveloped alpha and Ô¨Çavi viruses are from Sindbis Virus and Tick-Borne
+Figure 6. The folds employed to dei¨Åne the lineages of capsids in Abrescia et al. (75). For each subunit fold, the lineage is given as well as the PDB
+identii¨Åer for the coordinates used to generate the specii¨Åc fold. The folds for the enveloped alpha and i¨Çavi viruses are from Sindbis Virus and Tick-Borne
 Encephalitis Virus, respectively. Figures were produced with PMV (Python Molecular Viewer) (78).
 
 8 J. Biol. Chem. (2021) 296 100554
@@ -547,7 +547,7 @@ database, has played a pivotal role in making icosahedral virus
 structures accessible for the plethora of studies that have
 placed many aspects of virology on a structural foundation.
 
-Acknowledgments‚ÄîThe authors thank Jean-Yves Sgro (UW,
+Acknowledgments-The authors thank Jean-Yves Sgro (UW,
 Madison), Tom Goddard (UC, San Francisco), and Vijay Reddy
 (Scripps Research) for sharing their experiences in the
 development and application of tools for using virus structures in
@@ -555,16 +555,16 @@ research. We also thank Marc Bergdol (IBMP, Strasbourg) and
 Daniel Montiel Garcia (Scripps Research) for providing lists of
 icosahedral virus deposits to the PDB in easily accessible
 chronological order.
-Author contributions‚ÄîJ. E. J. and A. J. O. wrote the article together.
+Author contributions-J. E. J. and A. J. O. wrote the article together.
 A. J. O. created Figures 3, 5, and 6.
-Funding and additional information‚ÄîA. J. O. is supported by grants
+Funding and additional information-A. J. O. is supported by grants
 GM120604 and AI150472 from the US National Institutes of
 Health. The content is solely the responsibility of the authors and
-does not necessarily represent the ofÔ¨Åcial views of the National
+does not necessarily represent the ofi¨Åcial views of the National
 Institutes of Health.
-ConÔ¨Çict of interest‚ÄîThe authors declare that they have no conÔ¨Çicts
+Coni¨Çict of interest-The authors declare that they have no coni¨Çicts
 of interest with the contents of this article.
-Abbreviations‚ÄîThe abbreviations used are: HRV, Human Rhinovirus; MCP, major capsid protein; NCS, noncrystallographic symmetry; PDB, Protein Data Bank; PV, Poliovirus; SBMV, Southern
+Abbreviations-The abbreviations used are: HRV, Human Rhinovirus; MCP, major capsid protein; NCS, noncrystallographic symmetry; PDB, Protein Data Bank; PV, Poliovirus; SBMV, Southern
 Bean Mosaic Virus; TBSV, Tomato Bushy Stunt Virus; VIPER, virus
 particle explorer.
 
@@ -572,257 +572,257 @@ References
 1. Bernal, J., Fanchuken, I., and Riley, D. (1938) Structure of the crystals of
 tomato bushy stunt virus preparations. Nature 142, 1075
 2. Crick, F., and Watson, J. (1956) Structure of small viruses. Nature 177,
-473‚Äì475
-3. Caspar, D. L. D. (1956) Structure of bushy stunt virus. Nature 177, 475‚Äì476
+473-475
+3. Caspar, D. L. D. (1956) Structure of bushy stunt virus. Nature 177, 475-476
 4. Caspar, D. L., and Klug, A. (1962) Physical principles in the construction
-of regular viruses. Cold Spring Harb. Symp. Quant. Biol. 27, 1‚Äì24
+of regular viruses. Cold Spring Harb. Symp. Quant. Biol. 27, 1-24
 5. Winkler, F. K., Schutt, C. E., Harrison, S. C., and Bricogne, G. (1977)
-Tomato bushy stunt virus at 5.5-A resolution. Nature 265, 509‚Äì513
+Tomato bushy stunt virus at 5.5-A resolution. Nature 265, 509-513
 6. Harrison, S. C., Olson, A. J., Schutt, C. E., Winkler, F. K., and Bricogne, G.
-(1978) Tomato bushy stunt virus at 2.9 A resolution. Nature 276, 368‚Äì373
+(1978) Tomato bushy stunt virus at 2.9 A resolution. Nature 276, 368-373
 7. Abad-Zapatero, C., Abdel-Meguid, S., Johnson, J., Leslie, A., Rayment, I.,
 Rossmann, M., Suck, D., and Tsukihara, T. (1980) Structure of southern
-bean mosaic virus at 2.8 √Ö resolution. Nature (London) 286, 33‚Äì39
+bean mosaic virus at 2.8 A resolution. Nature (London) 286, 33-39
 8. Chapman, M. S., and Liljas, L. (2003) Structural folds of viral proteins.
-Adv. Protein Chem. 64, 125‚Äì196
+Adv. Protein Chem. 64, 125-196
 9. Richards, F. M. (1968) The matching of physical models to threedimensional electron-density maps: A simple optical device. J. Mol. Biol.
-37, 225‚Äì230
+37, 225-230
 10. Johnson, C. K. (1965) OR TEP: A FORTRAN Thermal-Ellipsoid Plot
 Program for Crystal Structure Illustrations. Oak Ridge National Laboratory Reports 3794
 11. Hogle, J. M., Chow, M., and Filman, D. J. (1985) Three-dimensional
-structure of poliovirus at 2.9 A resolution. Science 229, 1358‚Äì1365
+structure of poliovirus at 2.9 A resolution. Science 229, 1358-1365
 12. Rossmann, M. G., Arnold, E., Erickson, J. W., Frankenberger, E. A.,
-GrifÔ¨Åth, J. P., Hecht, H. J., Johnson, J. E., Kamer, G., Luo, M., Mosser, A.
+Grifi¨Åth, J. P., Hecht, H. J., Johnson, J. E., Kamer, G., Luo, M., Mosser, A.
 G., Rueckert, R. R., Sherry, B., and Vriend, G. (1985) Structure of a human
 
 common cold virus and functional relationship to other picornaviruses.
-Nature 317, 145‚Äì153
+Nature 317, 145-153
 13. Chen, Z., Stauffacher, C., Li, Y., Schmidt, T., Bomu, W., Kamer, G.,
-Shanks, M., Lomonossoff, G., and Johnson, J. (1989) Protein-RNA interactions in an icosahedral virus at 3.0 √Ö resolution. Science 245, 154‚Äì
+Shanks, M., Lomonossoff, G., and Johnson, J. (1989) Protein-RNA interactions in an icosahedral virus at 3.0 A resolution. Science 245, 154-
 159
 14. Chow, M., Yabrov, R., Bittle, J., Hogle, J., and Baltimore, D. (1985) Synthetic peptides from four separate regions of the poliovirus type 1 capsid
 protein VP1 induce neutralizing antibodies. Proc. Natl. Acad. Sci. U. S. A.
-82, 910‚Äì914
+82, 910-914
 15. Sherry, B., Mosser, A. G., Colonno, R. J., and Rueckert, R. R. (1986) Use of
 monoclonal antibodies to identify four neutralization immunogens on a
-common cold picornavirus, human rhinovirus 14. J. Virol. 57, 246‚Äì257
-16. Rossmann, M. G. (1989) The canyon hypothesis. Viral Immunol. 2, 143‚Äì
+common cold picornavirus, human rhinovirus 14. J. Virol. 57, 246-257
+16. Rossmann, M. G. (1989) The canyon hypothesis. Viral Immunol. 2, 143-
 161
 17. Smith, T. J., Kremer, M. J., Luo, M., Vriend, G., Arnold, E., Kamer, G.,
 Rossmann, M. G., McKinlay, M. A., Diana, G. D., and Otto, M. J. (1986)
 The site of attachment in human rhinovirus 14 for antiviral agents that
-inhibit uncoating. Science 233, 1286‚Äì1293
+inhibit uncoating. Science 233, 1286-1293
 18. McKinlay, M. A., and Rossmann, M. G. (1989) Rational design of antiviral
-agents. Annu. Rev. Pharmacol. Toxicol. 29, 111‚Äì122
+agents. Annu. Rev. Pharmacol. Toxicol. 29, 111-122
 19. Kaesberg, P., Dasgupta, R., Sgro, J., Wery, J., Selling, B., Hosur, M., and
 Johnson, J. (1990) Structural homology among four nodaviruses as deduced
-by sequencing and X-ray crystallography. J. Mol. Biol. 214, 423‚Äì435
+by sequencing and X-ray crystallography. J. Mol. Biol. 214, 423-435
 20. Parrish, C. R., Aquadro, C. F., Strassheim, M. L., Evermann, J. F., Sgro,
 J. Y., and Mohammed, H. O. (1991) Rapid antigenic-type replacement
-and DNA sequence evolution of canine parvovirus. J. Virol. 65, 6544‚Äì
+and DNA sequence evolution of canine parvovirus. J. Virol. 65, 6544-
 6552
 21. Luo, M., Vriend, G., Kamer, G., Minor, I., Arnold, E., Rossmann, M. G.,
 Boege, U., Scraba, D. G., Duke, G. M., and Palmenberg, A. C. (1987) The
-atomic structure of Mengo virus at 3.0 A resolution. Science 235, 182‚Äì
+atomic structure of Mengo virus at 3.0 A resolution. Science 235, 182-
 191
-22. Wery, J., Reddy, V., Hosur, M., and Johnson, J. (1994) The reÔ¨Åned
-structure of an insect virus at 2.8 √Ö resolution. J. Mol. Biol. 235, 565‚Äì586
+22. Wery, J., Reddy, V., Hosur, M., and Johnson, J. (1994) The rei¨Åned
+structure of an insect virus at 2.8 A resolution. J. Mol. Biol. 235, 565-586
 23. Reddy, V., Natarajan, P., Okerberg, B., Li, K., Damodaran, K., Morton, R.,
 Brooks, C., III, and Johnson, J. (2001) VIrus particle ExploreR (VIPER): A
 website for virus capsid structures and their computational analyses. J.
-Virol. 75, 11943‚Äì11947
+Virol. 75, 11943-11947
 24. Reddy, V. S., Natarajan, P., Lander, G., Qu, C., Brooks, C. L., III, and
 Johnson, J. E. (2004) Virus particle explorer (VIPER): A repository of virus
 capsid structures. In: Cheng, R. H., Hammar, L., eds. Conformational
-Proteomics of Macromolecular Architecture, World ScientiÔ¨Åc, Singapore:
-403‚Äì412
+Proteomics of Macromolecular Architecture, World Scientii¨Åc, Singapore:
+403-412
 25. Shepherd, C. M., Borelli, I. A., Lander, G., Natarajan, P., Siddavanahalli,
 V., Bajaj, C., Johnson, J. E., Brooks, C. L., 3rd, and Reddy, V. S. (2006)
 VIPERdb: A relational database for structural virology. Nucleic Acids Res.
-34, D386‚ÄìD389
+34, D386-D389
 26. Carrillo-Tripp, M., Shepherd, C. M., Borelli, I. A., Venkataraman, S.,
 Lander, G., Natarajan, P., Johnson, J. E., Brooks, C. L., 3rd, and Reddy, V.
 S. (2009) VIPERdb2: An enhanced and web API enabled relational
-database for structural virology. Nucleic Acids Res. 37, D436‚Äì442
+database for structural virology. Nucleic Acids Res. 37, D436-442
 27. Ho, P. T., Montiel-Garcia, D. J., Wong, J. J., Carrillo-Tripp, M., Brooks,
 C. L., 3rd, Johnson, J. E., and Reddy, V. S. (2018) VIPERdb: A tool for
-virus research. Annu. Rev. Virol. 5, 477‚Äì488
+virus research. Annu. Rev. Virol. 5, 477-488
 28. Lawson, C. L., Dutta, S., Westbrook, J. D., Henrick, K., and Berman, H. M.
 (2008) Representation of viruses in the remediated PDB archive. Acta
-Crystallogr. D Biol. Crystallogr. D64, 874‚Äì882
+Crystallogr. D Biol. Crystallogr. D64, 874-882
 29. McKenna, R., Xia, D., Willingmann, P., Ilag, L. L., Krishnaswamy, S.,
 Rossmann, M. G., Olson, N. H., Baker, T. S., and Incardona, N. L. (1992)
 Atomic structure of single-stranded DNA bacteriophage phi X174 and its
-functional implications. Nature 355, 137‚Äì143
+functional implications. Nature 355, 137-143
 30. Tsao, J., Chapman, M. S., Agbandje, M., Keller, W., Smith, K., Wu, H.,
 Luo, M., Smith, T. J., Rossmann, M. G., and Compans, R. W. (1991) The
-three-dimensional structure of canine parvovirus and its functional implications. Science 251, 1456‚Äì1464
+three-dimensional structure of canine parvovirus and its functional implications. Science 251, 1456-1464
 31. Hosur, M., Schmidt, T., Tucker, R., Johnson, J., Gallagher, T., Selling, B.,
-and Rueckert, R. (1987) Structure of an insect virus at 3.0 √Ö resolution.
-Proteins 2, 167‚Äì176
+and Rueckert, R. (1987) Structure of an insect virus at 3.0 A resolution.
+Proteins 2, 167-176
 
 J. Biol. Chem. (2021) 296 100554
 
 9
 
 JBC REVIEWS: Icosahedral viruses and the pdb
-32. Valegard, K., Liljas, L., Fridborg, K., and Unge, T. (1990) The threedimensional structure of the bacterial virus MS2. Nature 345, 36‚Äì41
+32. Valegard, K., Liljas, L., Fridborg, K., and Unge, T. (1990) The threedimensional structure of the bacterial virus MS2. Nature 345, 36-41
 33. Liddington, R. C., Yan, Y., Moulai, J., Sahli, R., Benjamin, T. L., and
 Harrison, S. C. (1991) Structure of simian virus 40 at 3.8-A resolution.
-Nature 354, 278‚Äì284
+Nature 354, 278-284
 34. Stehle, T., Yan, Y., Benjamin, T. L., and Harrison, S. C. (1994) Structure of
-murine polyomavirus complexed with an oligosaccharide receptor fragment. Nature 369, 160‚Äì163
+murine polyomavirus complexed with an oligosaccharide receptor fragment. Nature 369, 160-163
 35. Grimes, J. M., Burroughs, J. N., Gouet, P., Diprose, J. M., Malby, R.,
 Zientara, S., Mertens, P. P., and Stuart, D. I. (1998) The atomic structure
-of the bluetongue virus core. Nature 395, 470‚Äì478
+of the bluetongue virus core. Nature 395, 470-478
 36. Reinisch, K. M., Nibert, M. L., and Harrison, S. C. (2000) Structure of the
-reovirus core at 3.6 A resolution. Nature 404, 960‚Äì967
+reovirus core at 3.6 A resolution. Nature 404, 960-967
 37. Chandrasekar, V., and Johnson, J. E. (1998) The structure of tobacco
 ringspot virus: A link in the evolution of icosahedral capsids in the
-picornavirus superfamily. Structure 6, 157‚Äì171
+picornavirus superfamily. Structure 6, 157-171
 38. Dokland, T., McKenna, R., Ilag, L. L., Bowman, B. R., Incardona, N. L.,
 Fane, B. A., and Rossmann, M. G. (1997) Structure of a viral procapsid
-with molecular scaffolding. Nature 389, 308‚Äì313
+with molecular scaffolding. Nature 389, 308-313
 39. Tate, J., Liljas, L., Scotti, P., Christian, P., Lin, T., and Johnson, J. (1999)
-The crystal structure of cricket paralysis virus: The Ô¨Årst view of a new
-virus family. Nat. Struct. Biol. 6, 765‚Äì774
+The crystal structure of cricket paralysis virus: The i¨Årst view of a new
+virus family. Nat. Struct. Biol. 6, 765-774
 40. Hewat, E. A., Verdaguer, N., Fita, I., Blakemore, W., Brookes, S., King, A.,
 Newman, J., Domingo, E., Mateu, M. G., and Stuart, D. I. (1997) Structure
 of the complex of an Fab fragment of a neutralizing antibody with footand-mouth disease virus: Positioning of a highly mobile antigenic loop.
-EMBO J. 16, 1492‚Äì1500
+EMBO J. 16, 1492-1500
 41. Kolatkar, P. R., Bella, J., Olson, N. H., Bator, C. M., Baker, T. S., and
 Rossmann, M. G. (1999) Structural studies of two rhinovirus serotypes
-complexed with fragments of their cellular receptor. EMBO J. 18, 6249‚Äì
+complexed with fragments of their cellular receptor. EMBO J. 18, 6249-
 6259
 42. He, Y., Bowman, V. D., Mueller, S., Bator, C. M., Bella, J., Peng, X., Baker, T.
 S., Wimmer, E., Kuhn, R. J., and Rossmann, M. G. (2000) Interaction of the
-poliovirus receptor with poliovirus. Proc. Natl. Acad. Sci. U. S. A. 97, 79‚Äì84
+poliovirus receptor with poliovirus. Proc. Natl. Acad. Sci. U. S. A. 97, 79-84
 43. Kuhn, R. J., Zhang, W., Rossmann, M. G., Pletnev, S. V., Corver, J., Lenches,
 E., Jones, C. T., Mukhopadhyay, S., Chipman, P. R., Strauss, E. G., Baker, T.
 S., and Strauss, J. H. (2002) Structure of dengue virus: Implications for
-Ô¨Çavivirus organization, maturation, and fusion. Cell 108, 717‚Äì725
+i¨Çavivirus organization, maturation, and fusion. Cell 108, 717-725
 44. Zhang, W., Mukhopadhyay, S., Pletnev, S. V., Baker, T. S., Kuhn, R. J., and
 Rossmann, M. G. (2002) Placement of the structural proteins in Sindbis
-virus. J. Virol. 76, 11645‚Äì11658
+virus. J. Virol. 76, 11645-11658
 45. Rey, F. A., Heinz, F. X., Mandl, C., Kunz, C., and Harrison, S. C. (1995)
 The envelope glycoprotein from tick-borne encephalitis virus at 2 A
-resolution. Nature 375, 291‚Äì298
+resolution. Nature 375, 291-298
 46. Lescar, J., Roussel, A., Wien, M. W., Navaza, J., Fuller, S. D., Wengler, G.,
 Wengler, G., and Rey, F. A. (2001) The fusion glycoprotein shell of
-Semliki forest virus: An icosahedral assembly primed for fusogenic activation at endosomal pH. Cell 105, 137‚Äì148
+Semliki forest virus: An icosahedral assembly primed for fusogenic activation at endosomal pH. Cell 105, 137-148
 47. Wikoff, W., Liljas, L., Duda, R., Tsuruta, H., Hendrix, R., and Johnson, J.
 (2000) Topologically linked protein rings in the bacteriophage HK97
-capsid. Science 289, 2129‚Äì2133
+capsid. Science 289, 2129-2133
 48. Baker, M. L., Jiang, W., Rixon, F. J., and Chiu, W. (2005) Common
 ancestry of herpesviruses and tailed DNA bacteriophages. J. Virol. 79,
-14967‚Äì14970
+14967-14970
 49. Morais, M. C., Tao, Y., Olson, N. H., Grimes, S., Jardine, P. J., Anderson,
 D. L., Baker, T. S., and Rossmann, M. G. (2001) Cryoelectron-microscopy
 image reconstruction of symmetry mismatches in bacteriophage phi29. J.
-Struct. Biol. 135, 38‚Äì46
+Struct. Biol. 135, 38-46
 50. San Martin, C., Huiskonen, J. T., Bamford, J. K., Butcher, S. J., Fuller, S.
 D., Bamford, D. H., and Burnett, R. M. (2002) Minor proteins, mobile
 arms and membrane-capsid interactions in the bacteriophage PRD1
-capsid. Nat. Struct. Biol. 9, 756‚Äì763
+capsid. Nat. Struct. Biol. 9, 756-763
 51. Fokine, A., Chipman, P. R., Leiman, P. G., Mesyanzhinov, V. V., Rao, V.
 B., and Rossmann, M. G. (2004) Molecular architecture of the prolate
-head of bacteriophage T4. Proc. Natl. Acad. Sci. U. S. A. 101, 6003‚Äì6008
+head of bacteriophage T4. Proc. Natl. Acad. Sci. U. S. A. 101, 6003-6008
 52. Gan, L., Speir, J. A., Conway, J. F., Lander, G., Cheng, N., Firek, B. A.,
 Hendrix, R. W., Duda, R. L., Liljas, L., and Johnson, J. E. (2006) Capsid
 
 10 J. Biol. Chem. (2021) 296 100554
 
-conformational sampling in HK97 maturation visualized by X-ray crystallography and cryo-EM. Structure 14, 1655‚Äì1665
+conformational sampling in HK97 maturation visualized by X-ray crystallography and cryo-EM. Structure 14, 1655-1665
 53. Wikoff, W. R., Conway, J. F., Tang, J., Lee, K. K., Gan, L., Cheng, N.,
 Duda, R. L., Hendrix, R. W., Steven, A. C., and Johnson, J. E. (2006) Timeresolved molecular dynamics of bacteriophage HK97 capsid maturation
 interpreted by electron cryo-microscopy and X-ray crystallography. J.
-Struct. Biol. 153, 300‚Äì306
+Struct. Biol. 153, 300-306
 54. Gertsman, I., Gan, L., Guttman, M., Lee, K., Speir, J. A., Duda, R. L.,
 Hendrix, R. W., Komives, E. A., and Johnson, J. E. (2009) An unexpected
-twist in viral capsid maturation. Nature 458, 646‚Äì651
+twist in viral capsid maturation. Nature 458, 646-651
 55. Abrescia, N. G., Grimes, J. M., Kivela, H. M., Assenberg, R., Sutton, G.
 C., Butcher, S. J., Bamford, J. K., Bamford, D. H., and Stuart, D. I. (2008)
 Insights into virus evolution and membrane biogenesis from the
 structure of the marine lipid-containing bacteriophage PM2. Mol. Cell
-31, 749‚Äì761
+31, 749-761
 56. Yu, X., Jin, L., and Zhou, Z. H. (2008) 3.88 A structure of cytoplasmic
-polyhedrosis virus by cryo-electron microscopy. Nature 453, 415‚Äì419
+polyhedrosis virus by cryo-electron microscopy. Nature 453, 415-419
 57. Baker, M. L., Hryc, C. F., Zhang, Q., Wu, W., Jakana, J., Haase-Pettingell,
 C., Afonine, P. V., Adams, P. D., King, J. A., Jiang, W., and Chiu, W.
 (2013) Validated near-atomic resolution structure of bacteriophage
 epsilon15 derived from cryo-EM and modeling. Proc. Natl. Acad. Sci. U.
-S. A. 110, 12301‚Äì12306
+S. A. 110, 12301-12306
 58. Milazzo, A. C., Leblanc, P., Duttweiler, F., Jin, L., Bouwer, J. C., Peltier, S.,
 Ellisman, M., Bieser, F., Matis, H. S., Wieman, H., Denes, P., Kleinfelder,
 S., and Xuong, N. H. (2005) Active pixel sensor array as a detector for
-electron microscopy. Ultramicroscopy 104, 152‚Äì159
-59. Lerch, T. F., O‚ÄôDonnell, J. K., Meyer, N. L., Xie, Q., Taylor, K. A., Stagg, S. M.,
+electron microscopy. Ultramicroscopy 104, 152-159
+59. Lerch, T. F., O'Donnell, J. K., Meyer, N. L., Xie, Q., Taylor, K. A., Stagg, S. M.,
 and Chapman, M. S. (2012) Structure of AAV-DJ, a retargeted gene therapy
-vector: Cryo-electron microscopy at 4.5 A resolution. Structure 20, 1310‚Äì1320
+vector: Cryo-electron microscopy at 4.5 A resolution. Structure 20, 1310-1320
 60. Wang, X., Peng, W., Ren, J., Hu, Z., Xu, J., Lou, Z., Li, X., Yin, W., Shen,
 X., Porta, C., Walter, T. S., Evans, G., Axford, D., Owen, R., Rowlands, D.
 J., et al. (2012) A sensor-adaptor mechanism for enterovirus uncoating
-from structures of EV71. Nat. Struct. Mol. Biol. 19, 424‚Äì429
+from structures of EV71. Nat. Struct. Mol. Biol. 19, 424-429
 61. Veesler, D., Ng, T. S., Sendamarai, A. K., Eilers, B. J., Lawrence, C. M.,
 Lok, S. M., Young, M. J., Johnson, J. E., and Fu, C. Y. (2013) Atomic
 structure of the 75 MDa extremophile sulfolobus turreted icosahedral
 virus determined by CryoEM and X-ray crystallography. Proc. Natl. Acad.
-Sci. U. S. A. 110, 5504‚Äì5509
+Sci. U. S. A. 110, 5504-5509
 62. Kostyuchenko, V. A., Zhang, Q., Tan, J. L., Ng, T. S., and Lok, S. M.
 (2013) Immature and mature dengue serotype 1 virus structures provide
-insight into the maturation process. J. Virol. 87, 7700‚Äì7707
+insight into the maturation process. J. Virol. 87, 7700-7707
 63. Guo, F., Liu, Z., Fang, P. A., Zhang, Q., Wright, E. T., Wu, W., Zhang, C.,
 Vago, F., Ren, Y., Jakana, J., Chiu, W., Serwer, P., and Jiang, W. (2014)
 Capsid expansion mechanism of bacteriophage T7 revealed by multistate
 atomic models derived from cryo-EM reconstructions. Proc. Natl. Acad.
-Sci. U. S. A. 111, E4606‚ÄìE4614
+Sci. U. S. A. 111, E4606-E4614
 64. Johnson, J. E. (2013) Confessions of an icosahedral virus crystallographer.
-J. Electron Microsc. 62, 69‚Äì79
+J. Electron Microsc. 62, 69-79
 65. Reddy, V. S., Natchiar, S. K., Stewart, P. L., and Nemerow, G. R. (2010) Crystal
-structure of human adenovirus at 3.5 A resolution. Science 329, 1071‚Äì1075
+structure of human adenovirus at 3.5 A resolution. Science 329, 1071-1075
 66. Liu, H., Jin, L., Koh, S. B., Atanasov, I., Schein, S., Wu, L., and Zhou, Z. H.
-(2010) Atomic structure of human adenovirus by cryo-EM reveals interactions among protein networks. Science 329, 1038‚Äì1043
+(2010) Atomic structure of human adenovirus by cryo-EM reveals interactions among protein networks. Science 329, 1038-1043
 67. Harrison, S. C. (2010) Virology. Looking inside adenovirus. Science 329,
-1026‚Äì1027
+1026-1027
 68. Dai, X., Wu, L., Sun, R., and Zhou, Z. H. (2017) Atomic structures of
 minor proteins VI and VII in human adenovirus. J. Virol. 91, e00850-17
 69. Kundhavai Natchiar, S., Venkataraman, S., Mullen, T. M., Nemerow, G.
 R., and Reddy, V. S. (2018) Revised crystal structure of human adenovirus
 reveals the limits on protein IX quasi-equivalence and on analyzing large
-macromolecular complexes. J. Mol. Biol. 430, 4132‚Äì4141
+macromolecular complexes. J. Mol. Biol. 430, 4132-4141
 70. Tan, Y. Z., Aiyer, S., Mietzsch, M., Hull, J. A., McKenna, R., Grieger, J.,
 Samulski, R. J., Baker, T. S., Agbandje-McKenna, M., and Lyumkis, D.
 (2018) Sub-2 A Ewald curvature corrected structure of an AAV2 capsid
 variant. Nat. Commun. 9, 3628
 71. Hendrix, R. W., and Johnson, J. E. (2012) Bacteriophage HK97 capsid
-assembly and maturation. Adv. Exp. Med. Biol. 726, 351‚Äì363
+assembly and maturation. Adv. Exp. Med. Biol. 726, 351-363
 
 JBC REVIEWS: Icosahedral viruses and the pdb
 72. de Silva, A. M., Rey, F. A., Young, P. R., Hilgenfeld, R., and Vasudevan, S.
 G. (2018) Viral entry and NS1 as potential antiviral drug targets. Adv.
-Exp. Med. Biol. 1062, 107‚Äì113
+Exp. Med. Biol. 1062, 107-113
 73. Schlicksup, C. J., and Zlotnick, A. (2020) Viral structural proteins as
-targets for antivirals. Curr. Opin. Virol. 45, 43‚Äì50
+targets for antivirals. Curr. Opin. Virol. 45, 43-50
 74. Powell, L. A., Miller, A., Fox, J. M., Kose, N., Klose, T., Kim, A. S.,
 Bombardi, R., Tennekoon, R. N., Dharshan de Silva, A., Carnahan, R. H.,
 Diamond, M. S., Rossmann, M. G., Kuhn, R. J., and Crowe, J. E., Jr. (2020)
 Human mAbs broadly protect against arthritogenic alphaviruses by
 recognizing conserved elements of the Mxra8 receptor-binding site. Cell
-Host Microbe 28, 699‚Äì711.e697
+Host Microbe 28, 699-711.e697
 
 75. Abrescia, N. G., Bamford, D. H., Grimes, J. M., and Stuart, D. I.
-(2012) Structure uniÔ¨Åes the viral universe. Annu. Rev. Biochem. 81,
-795‚Äì822
-76. O‚ÄôDonnell, T. J., and Olson, A. J. (1981) GRAMPS - a graphics
+(2012) Structure unii¨Åes the viral universe. Annu. Rev. Biochem. 81,
+795-822
+76. O'Donnell, T. J., and Olson, A. J. (1981) GRAMPS - a graphics
 language interpreter for real-time, interactive, three-dimensional
 picture editing and animation. SIGGRAPH Comput. Graph. 15,
-133‚Äì142
+133-142
 77. Max, N. L. (1983) Computer Graphics Distortion of IMAX and OMNIMAX Projection, Lawrence Livermore National Lab, CA
 78. Sanner, M. F. (1999) Python: A programming language for software
-integration and development. J. Mol. Graph. Model. 17, 57‚Äì61
+integration and development. J. Mol. Graph. Model. 17, 57-61
 
 J. Biol. Chem. (2021) 296 100554
 
 11
 
-
+

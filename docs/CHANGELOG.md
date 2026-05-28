@@ -23,7 +23,7 @@
 - Speed: `compute_residuals` now accepts an optional `face_orderings`
   argument so Stage B residual evaluations skip the per-call O(F^2)
   rediscovery of vertex IDs. GP(4,2) Stage B drops from ~150 s to ~8 s.
-- Rewrote [docs/GP_EQUILATERAL_CONVERGENCE.md](GP_EQUILATERAL_CONVERGENCE.md)
+- Rewrote `removed`
   around the two-stage architecture. The "if a case fails Stage A,
   debug the solver" recovery strategies replace the old M0 evidence
   ladder.
@@ -46,7 +46,7 @@
   over `KNOWN_NONCONVERGENT_CASES`, calls `force_attempt_solve` per case, and
   prints current residuals or a `RECONSIDER:` line if a case now passes.
 - Promoted the M0 solver-stabilization investigation out of `docs/archive/` to
-  [docs/GP_EQUILATERAL_CONVERGENCE.md](GP_EQUILATERAL_CONVERGENCE.md) as the canonical
+  `removed`as the canonical
   evidence reference for non-converging (h,k) cases.
 - Added a `## Convergence matrix` section to [docs/USAGE.md](USAGE.md) listing every
   supported (h,k), its T number and symmetry class, and whether the equilateral
@@ -63,7 +63,7 @@
   triangles; not a geometry-construction entry point. Updated the call
   site in `goldberg_brick.equilateral`.
 - Scrubbed stale `--construction centroid` recommendations from
-  [docs/GP_EQUILATERAL_CONVERGENCE.md](GP_EQUILATERAL_CONVERGENCE.md);
+  `removed`;
   M0 experiment descriptions (what was tried) are preserved.
 - Removed the `--construction` flag (and the `centroid` construction mode)
   from the CLI. The only supported construction is the Schein-Gayed equilateral

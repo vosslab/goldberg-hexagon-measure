@@ -50,4 +50,4 @@ Implementation uses local article PDFs as references:
 
 Equilateral geometry converges for GP(h,k) with k > 0 and some k = 0 cases;
 GP(2,0) does not converge due to fundamental incompatibility with rotational symmetry
-reduction (see [docs/GP_EQUILATERAL_CONVERGENCE.md](docs/GP_EQUILATERAL_CONVERGENCE.md) for analysis).
+reduction.
