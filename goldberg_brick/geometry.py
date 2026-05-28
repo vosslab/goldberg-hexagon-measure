@@ -1,14 +1,19 @@
 """Measured spherical geometry for Goldberg hexagon orbit representatives."""
 
+import warnings
 import dataclasses
 import math
 
 import goldberg_brick.dual
+import goldberg_brick.equilateral
 import goldberg_brick.orbits
 import goldberg_brick.triangulation
 
 
 Point3D = tuple[float, float, float]
+
+# Planarity tolerance for warp-mode classification (M1 test gate)
+PLANARITY_TOLERANCE = 1e-7
 
 
 @dataclasses.dataclass(frozen=True)
@@ -20,6 +25,25 @@ class HexagonGeometry:
 	angle_sequence: tuple[float, ...]
 	planarity_error: float
 	dihedral_angle_sequence: tuple[float, ...]
+	warp_mode: str
+
+
+@dataclasses.dataclass(frozen=True)
+class ConnectorClass:
+	"""One distinct connector value (angle, side, or dihedral) for an orbit."""
+
+	value: float
+	count_per_face: int
+	total_in_orbit: int
+
+
+@dataclasses.dataclass(frozen=True)
+class ConnectorCounts:
+	"""Per-orbit connector class multiplicities for builder use."""
+
+	angles: tuple[ConnectorClass, ...]
+	sides: tuple[ConnectorClass, ...]
+	dihedrals: tuple[ConnectorClass, ...]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -137,11 +161,23 @@ def vertex_coordinate(
 
 
 #============================================
-def triangle_centroid_coordinate(
+def _geodesic_triangle_centroid_on_sphere(
 	mesh: goldberg_brick.triangulation.GeodesicMesh,
 	triangle: tuple[goldberg_brick.triangulation.VertexKey, ...],
 ) -> Point3D:
-	"""Return projected spherical centroid for a geodesic triangle."""
+	"""Return the spherical centroid of a geodesic triangle.
+
+	Private helper. Used in two places only:
+	1. As the initial-guess seed for the Schein-Gayed equilateral solver in
+	   `goldberg_brick.equilateral`.
+	2. To compute an angle around the tangent plane at a vertex, so incident
+	   triangles can be ordered circumferentially.
+
+	It is NOT a geometry construction. The centroid construction mode was
+	deleted from the public API on 2026-05-28; this helper is retained only for the
+	two private uses documented above. Do not call this from report, CLI, or
+	builder-facing code paths.
+	"""
 	total = (0.0, 0.0, 0.0)
 	for vertex in triangle:
 		total = add(total, vertex_coordinate(mesh, vertex))
@@ -192,7 +228,7 @@ def order_triangles_around_vertex(
 	basis_x, basis_y = tangent_basis(center)
 	keyed = []
 	for triangle in triangles:
-		point = triangle_centroid_coordinate(mesh, triangle)
+		point = _geodesic_triangle_centroid_on_sphere(mesh, triangle)
 		delta = subtract(point, center)
 		angle = math.atan2(dot(delta, basis_y), dot(delta, basis_x))
 		keyed.append((angle, repr(triangle), triangle))
@@ -209,13 +245,20 @@ def ordered_goldberg_vertices(
 		goldberg_brick.triangulation.VertexKey,
 		tuple[tuple[goldberg_brick.triangulation.VertexKey, ...], ...],
 	],
+	equilateral_positions: dict,
+	triangle_to_index: dict,
 ) -> tuple[Point3D, ...]:
-	"""Return ordered spherical vertices for one Goldberg face."""
+	"""Return ordered spherical vertices for one Goldberg face.
+
+	Vertex coordinates come from the Schein-Gayed equilateral solver.
+	"""
 	triangles = incident_triangles[source_vertex]
 	ordered_triangles = order_triangles_around_vertex(mesh, source_vertex, triangles)
 	points = []
 	for triangle in ordered_triangles:
-		points.append(triangle_centroid_coordinate(mesh, triangle))
+		tri_idx = triangle_to_index[triangle]
+		vertex_id = goldberg_brick.equilateral.make_vertex_id(tri_idx)
+		points.append(equilateral_positions[vertex_id])
 	result = tuple(points)
 	return result
 
@@ -291,9 +334,17 @@ def face_points_for_source(
 		goldberg_brick.triangulation.VertexKey,
 		tuple[tuple[goldberg_brick.triangulation.VertexKey, ...], ...],
 	],
+	equilateral_positions: dict,
+	triangle_to_index: dict,
 ) -> tuple[Point3D, ...]:
 	"""Return ordered points for a Goldberg face source vertex."""
-	points = ordered_goldberg_vertices(graph.mesh, source_vertex, incident_triangles)
+	points = ordered_goldberg_vertices(
+		graph.mesh,
+		source_vertex,
+		incident_triangles,
+		equilateral_positions=equilateral_positions,
+		triangle_to_index=triangle_to_index,
+	)
 	return points
 
 
@@ -306,6 +357,8 @@ def dihedral_angles(
 		goldberg_brick.triangulation.VertexKey,
 		tuple[tuple[goldberg_brick.triangulation.VertexKey, ...], ...],
 	],
+	equilateral_positions: dict,
+	triangle_to_index: dict,
 ) -> tuple[float, ...]:
 	"""Return dihedral angles against adjacent Goldberg faces."""
 	face_normal = polygon_normal(points)
@@ -318,7 +371,13 @@ def dihedral_angles(
 	neighbor_keys.sort(key=repr)
 	values = []
 	for neighbor_key in neighbor_keys:
-		neighbor_points = face_points_for_source(graph, neighbor_key, incident_triangles)
+		neighbor_points = face_points_for_source(
+			graph,
+			neighbor_key,
+			incident_triangles,
+			equilateral_positions=equilateral_positions,
+			triangle_to_index=triangle_to_index,
+		)
 		neighbor_normal = polygon_normal(neighbor_points)
 		values.append(angle_degrees(face_normal, neighbor_normal))
 	return tuple(values)
@@ -353,25 +412,51 @@ def compute_hexagon_orbit_geometries(
 ) -> dict[str, HexagonGeometry]:
 	"""Compute measured geometry for each hexagon orbit representative."""
 	incident_triangles = build_incident_triangles(graph.mesh)
+	# Fetch the Schein-Gayed solver positions and build a
+	# triangle-tuple -> triangle-index lookup so the vertex helpers can pull
+	# the right cached coordinate per geodesic triangle.
+	h_index = graph.mesh.index_data.h
+	k_index = graph.mesh.index_data.k
+	equilateral_positions = goldberg_brick.equilateral.solve_schein_gayed_positions(
+		h_index, k_index
+	)
+	triangle_to_index = {
+		triangle: tri_idx for tri_idx, triangle in enumerate(graph.mesh.faces)
+	}
 	geometries = {}
 	for orbit in hexagon_orbits:
 		source_vertex = representative_source_for_orbit(graph, orbit)
-		points = face_points_for_source(graph, source_vertex, incident_triangles)
+		points = face_points_for_source(
+			graph,
+			source_vertex,
+			incident_triangles,
+			equilateral_positions=equilateral_positions,
+			triangle_to_index=triangle_to_index,
+		)
 		if len(points) != 6:
 			raise ValueError(f"hexagon representative does not have 6 vertices: {orbit.orbit_id}")
 		side_sequence = round_sequence(side_lengths(points), 6)
 		angle_sequence = round_sequence(internal_angles(points), 3)
 		planarity = round(planarity_error(points), 9)
 		dihedral_sequence = round_sequence(
-			dihedral_angles(graph, source_vertex, points, incident_triangles),
+			dihedral_angles(
+				graph,
+				source_vertex,
+				points,
+				incident_triangles,
+				equilateral_positions=equilateral_positions,
+				triangle_to_index=triangle_to_index,
+			),
 			3,
 		)
+		warp_mode = classify_warp_mode_from_geometry(points, angle_sequence)
 		geometries[orbit.orbit_id] = HexagonGeometry(
 			orbit_id=orbit.orbit_id,
 			side_length_sequence=side_sequence,
 			angle_sequence=angle_sequence,
 			planarity_error=planarity,
 			dihedral_angle_sequence=dihedral_sequence,
+			warp_mode=warp_mode,
 		)
 	return geometries
 
@@ -465,18 +550,90 @@ def classify_planarity(planarity_error: float) -> str:
 
 
 #============================================
-def classify_warp_mode(planarity_status: str, angle_pattern: str) -> str:
-	"""Classify broad warp mode from planarity and angle pattern."""
-	if planarity_status == "planar":
-		mode = "nearly planar"
-	elif angle_pattern == "abbabb":
-		mode = "boat-like"
-	elif angle_pattern == "ababab":
-		mode = "chair-like"
-	elif planarity_status == "slightly warped":
-		mode = "low asymmetric warp"
+def signed_plane_displacements(points: tuple[Point3D, ...]) -> tuple[float, ...]:
+	"""Return signed distances of each vertex from the best-fit plane."""
+	normal = polygon_normal(points)
+	centroid = polygon_centroid(points)
+	values = []
+	for point in points:
+		distance = dot(subtract(point, centroid), normal)
+		values.append(distance)
+	return tuple(values)
+
+
+#============================================
+def matches_cyclic_sign_pattern(
+	signs: tuple[int, ...],
+	template: tuple[int, ...],
+) -> bool:
+	"""Return True when ``signs`` matches any cyclic rotation of ``template``."""
+	n = len(template)
+	for offset in range(n):
+		rotated = tuple(template[(offset + i) % n] for i in range(n))
+		if rotated == signs:
+			return True
+	return False
+
+
+#============================================
+def classify_warp_mode_from_geometry(
+	points: tuple[Point3D, ...],
+	angle_sequence: tuple[float, ...],
+	planarity_tolerance: float = PLANARITY_TOLERANCE,
+) -> str:
+	"""Classify warp mode from measured signed plane displacements.
+
+	Primary signal: signed displacement of each of the 6 hexagon vertices
+	from the best-fit plane. Pattern matching is cyclic-invariant.
+	  - planar:     max |displacement| < tolerance.
+	  - boat:       sign pattern (+, -, -, +, -, -) or any cyclic rotation.
+	  - chair:      sign pattern (+, -, +, -, +, -) (alternating).
+	  - asymmetric: otherwise.
+
+	Cross-checks against canonical angle pattern from Schein-Gayed analysis:
+	  boat  expects angle pattern 122122 (i.e. canonical 'aabaab').
+	  chair expects angle pattern 121212 (i.e. canonical 'ababab').
+	A disagreement emits a RuntimeWarning but the signed-displacement label
+	wins as the primary classifier.
+	"""
+	displacements = signed_plane_displacements(points)
+	max_abs = max(abs(value) for value in displacements)
+	if max_abs < planarity_tolerance:
+		return "planar"
+	# Build a sign tuple, treating values within tolerance as zero.
+	signs = []
+	for value in displacements:
+		if abs(value) < planarity_tolerance:
+			signs.append(0)
+		elif value > 0.0:
+			signs.append(1)
+		else:
+			signs.append(-1)
+	signs_tuple = tuple(signs)
+	# Chair: alternating signs around the cycle.
+	chair_template = (1, -1, 1, -1, 1, -1)
+	# Boat: one peak / two troughs repeating: (+, -, -, +, -, -).
+	boat_template = (1, -1, -1, 1, -1, -1)
+	if matches_cyclic_sign_pattern(signs_tuple, chair_template):
+		mode = "chair"
+	elif matches_cyclic_sign_pattern(signs_tuple, boat_template):
+		mode = "boat"
 	else:
-		mode = "asymmetric warp"
+		mode = "asymmetric"
+	# Cross-validate with the canonical (oriented) angle pattern. Disagreement
+	# is a soft signal, primary label (displacement-based) still wins.
+	angle_raw = pattern_letters(angle_sequence, 0.25)
+	angle_canonical = canonical_pattern(angle_raw)
+	if mode == "boat" and angle_canonical != "aabaab":
+		warnings.warn(
+			f"warp_mode=boat but angle pattern is {angle_canonical} (expected 'aabaab')",
+			RuntimeWarning,
+		)
+	elif mode == "chair" and angle_canonical != "ababab":
+		warnings.warn(
+			f"warp_mode=chair but angle pattern is {angle_canonical} (expected 'ababab')",
+			RuntimeWarning,
+		)
 	return mode
 
 
@@ -492,23 +649,28 @@ def orientation_label(h_index: int, k_index: int) -> str:
 
 #============================================
 def classify_difficulty(
-	side_spread: float,
-	angle_deviation: float,
-	dihedral_spread: float,
+	brick_strategy: str,
+	distinct_angle_count: int,
 	planarity_status: str,
 ) -> str:
-	"""Classify builder difficulty from measured geometry."""
-	if (
-		side_spread >= 12.0
-		or angle_deviation >= 5.0
-		or dihedral_spread >= 3.0
-		or planarity_status == "warped"
-	):
-		difficulty = "hard"
-	elif side_spread >= 6.0 or angle_deviation >= 2.5 or dihedral_spread >= 1.5:
+	"""Classify builder difficulty from brick strategy and pattern complexity.
+
+	Difficulty is tied to brick_strategy + pattern complexity, not independent
+	angle-deviation metrics. The Schein-Gayed construction produces the canonical
+	target shape; angle deviation from 120 degrees is expected for non-regular orbits.
+	- easy: repeatable-panel with few distinct angle classes and planar geometry.
+	- medium: repeatable-panel with more pattern complexity OR hinge-required warping.
+	- hard: custom / asymmetric geometry.
+	"""
+	if brick_strategy == "repeatable-panel":
+		if distinct_angle_count <= 2 and planarity_status == "planar":
+			difficulty = "easy"
+		else:
+			difficulty = "medium"
+	elif brick_strategy == "hinge-required":
 		difficulty = "medium"
-	else:
-		difficulty = "easy"
+	else:  # custom
+		difficulty = "hard"
 	return difficulty
 
 
@@ -516,11 +678,11 @@ def classify_difficulty(
 def describe_shape(angle_pattern: str, side_pattern: str, difficulty: str) -> str:
 	"""Build a compact shape summary."""
 	if angle_pattern == "aaaaaa" and side_pattern == "aaaaaa":
-		summary = "regular-like repeated pattern"
+		summary = "regular hexagon"
 	elif angle_pattern[:3] == angle_pattern[3:] and side_pattern[:3] == side_pattern[3:]:
 		summary = "repeating 3-position pattern"
 	elif difficulty == "hard":
-		summary = "high distortion pattern"
+		summary = "custom high-distortion pattern"
 	elif difficulty == "medium":
 		summary = "moderate asymmetric pattern"
 	else:
@@ -532,7 +694,7 @@ def describe_shape(angle_pattern: str, side_pattern: str, difficulty: str) -> st
 def suggested_use(difficulty: str, warp_mode: str) -> str:
 	"""Suggest a cautious builder use from classification."""
 	if difficulty == "easy":
-		use = "likely reusable rigid panel"
+		use = "reusable panel; build once, replicate"
 	elif difficulty == "medium":
 		if "warp" in warp_mode:
 			use = "test hinge relief"
@@ -553,6 +715,108 @@ def reuse_group(difficulty: str) -> str:
 	else:
 		group = "custom / high distortion"
 	return group
+
+
+#============================================
+def cluster_values(values: tuple[float, ...], tolerance: float) -> list[list[int]]:
+	"""Group sequence indices by first-seen letter clusters using ``tolerance``.
+
+	Mirrors the clustering used in ``pattern_letters`` so multiplicities here
+	align exactly with the canonical pattern letters emitted in the report.
+	"""
+	clusters_centers: list[float] = []
+	clusters_indices: list[list[int]] = []
+	for index, value in enumerate(values):
+		matched_index = -1
+		for cluster_index, center in enumerate(clusters_centers):
+			if abs(value - center) <= tolerance:
+				matched_index = cluster_index
+				break
+		if matched_index == -1:
+			clusters_centers.append(value)
+			clusters_indices.append([index])
+		else:
+			clusters_indices[matched_index].append(index)
+	return clusters_indices
+
+
+#============================================
+def build_connector_classes(
+	values: tuple[float, ...],
+	tolerance: float,
+	face_count: int,
+) -> tuple[ConnectorClass, ...]:
+	"""Build sorted ConnectorClass tuples for a measured sequence.
+
+	Sort order: descending by count_per_face, tiebreak ascending by value.
+	"""
+	# Cluster sequence indices using the same first-seen rule as pattern_letters.
+	index_clusters = cluster_values(values, tolerance)
+	classes = []
+	for indices in index_clusters:
+		# Use the mean of clustered values as the canonical class value so the
+		# report shows a stable representative even when raw values jitter.
+		cluster_values_only = tuple(values[idx] for idx in indices)
+		representative = sum(cluster_values_only) / len(cluster_values_only)
+		count_per_face = len(indices)
+		total_in_orbit = face_count * count_per_face
+		classes.append(
+			ConnectorClass(
+				value=representative,
+				count_per_face=count_per_face,
+				total_in_orbit=total_in_orbit,
+			)
+		)
+	# Sort by count_per_face desc, then value asc
+	def sort_key(item: ConnectorClass) -> tuple[int, float]:
+		return (-item.count_per_face, item.value)
+	classes.sort(key=sort_key)
+	return tuple(classes)
+
+
+#============================================
+def connector_counts(
+	geometry: HexagonGeometry,
+	face_count: int,
+) -> ConnectorCounts:
+	"""Compute per-orbit connector class multiplicities for builder use."""
+	# Tolerances mirror compute_builder_summaries pattern_letters calls.
+	angle_tolerance = 0.25
+	dihedral_tolerance = 0.25
+	mean_side = mean(geometry.side_length_sequence)
+	side_tolerance = mean_side * 0.015
+	angles = build_connector_classes(
+		geometry.angle_sequence, angle_tolerance, face_count
+	)
+	sides = build_connector_classes(
+		geometry.side_length_sequence, side_tolerance, face_count
+	)
+	dihedrals = build_connector_classes(
+		geometry.dihedral_angle_sequence, dihedral_tolerance, face_count
+	)
+	counts = ConnectorCounts(angles=angles, sides=sides, dihedrals=dihedrals)
+	return counts
+
+
+#============================================
+def classify_brick_strategy(
+	geometry: HexagonGeometry,
+	side_spread: float,
+	distinct_angle_count: int,
+) -> str:
+	"""Return one of: repeatable-panel, hinge-required, custom."""
+	side_threshold = 1e-6
+	if (
+		geometry.warp_mode == "planar"
+		and side_spread < side_threshold
+		and distinct_angle_count <= 2
+	):
+		strategy = "repeatable-panel"
+	elif geometry.warp_mode in {"boat", "chair"} and side_spread < side_threshold:
+		strategy = "hinge-required"
+	else:
+		strategy = "custom"
+	return strategy
 
 
 #============================================
@@ -579,8 +843,12 @@ def compute_builder_summaries(
 		dihedral_raw = pattern_letters(geometry.dihedral_angle_sequence, 0.25)
 		dihedral_pattern = canonical_pattern(dihedral_raw)
 		dihedral_pattern_unoriented = canonical_unoriented_pattern(dihedral_raw)
-		warp_mode = classify_warp_mode(planarity, angle_pattern)
-		difficulty = classify_difficulty(side_spread, angle_deviation, dihedral, planarity)
+		warp_mode = geometry.warp_mode
+		distinct_angle_count = len(cluster_values(geometry.angle_sequence, 0.25))
+		brick_strategy = classify_brick_strategy(
+			geometry, side_spread, distinct_angle_count
+		)
+		difficulty = classify_difficulty(brick_strategy, distinct_angle_count, planarity)
 		summaries[orbit_id] = BuilderSummary(
 			orbit_id=orbit_id,
 			angle_pattern=angle_pattern,

@@ -1,0 +1,526 @@
+ISSN 0031-0301, Paleontological Journal, 2018, Vol. 52, No. 14, pp. 1697–1700. © Pleiades Publishing, Ltd., 2018.
+
+Algebraic Geometry of Icosahedral Viruses
+Yu. L. Voytekhovsky*
+Geological Institute, Federal Research Center, Kola Science Center, Russian Academy of Sciences, Apatity, 184209 Russia
+*e-mail: woyt@geoksc.apatity.ru
+Received March 15, 2018
+
+Abstract—In previous papers, the author has shown that the polyhedral structures of fullerene type are widespread in the living and mineral worlds. They are most clearly manifested in the capsids of icosahedral viruses,
+the geometry of which has been well studied. This article demonstrates that the nomenclature, classification,
+and potential transformations of these polyhedral structures can be succinctly described by means of matrix
+algebra.
+Keywords: fullerenes, capsids of icosahedral viruses, nomenclature, homologous series, classification, transformations, matrix algebra
+DOI: 10.1134/S0031030118140216
+
+INTRODUCTION
+In previous articles, the author has shown that the
+polyhedral structures of fullerene type in which only
+pentagonal faces (exactly 12) and hexagonal faces (all
+the others) are allowed are widespread in the mineral
+and living worlds (Voytekhovsky, 2015). In addition,
+the most symmetrical fullerenes show an easily recognizable dodecahedral motif, since the simplest fullerene is namely the Platonic dodecahedron and the
+most stable fullerene C60 is the truncated Platonic icosahedron. These motifs are encountered in the skeletons of radiolarians: dodecahedral (Circogonia dodecahedra Häckel) and icosahedral (Circogonia icosahedra
+Häckel). The icosahedral motif is very pronounced in
+the capsids of spherical viruses (Fig. 1). The fact that
+the dodecahedron and icosahedron are geometrically
+dual to each other allows easy switching between them
+
+Hexons (total 20)
+Pentons (total 12)
+
+and developing a general classification and nomenclature for the structures that are based on them. “The
+nomenclature and classification of viruses is a difficult
+age of virus science. The grouping can be based on
+morphological and physiological characteristics. An
+ideal classification should reflect evolutionary and
+phylogenetic relationships of organisms and also provide a convenient and rational system of nomenclature.” (Luria et al., 1978, 1981, pp. 18–23). In the proposed paper these problems are solved in terms of
+morphology.
+PREVIOUS RESULTS
+The principles of the structure and classification of
+the capsids of icosahedral viruses consisting of capsomeres (subunits, spherical protein globules) were
+proposed in the fundamental article by Caspar and
+
+Unidentiﬁed
+number of capsomeres
+on faces
+
+Removal
+of the external
+capsid by proteolysis
+
+Hollow spines
+on vertices
+of icosahedra
+
+Inner capsid containing RNA
+
+A capsid contains
+12 pentons
+(one on each vertex)
+Hexon and 240 hexons
+
+Fibrillar
+processes
+
+6
+Protomer
+or protein
+subunit
+5
+Penton
+
+ADENOVIRUS
+(60–90 nm,
+virus of ani-mals)
+
+Reovirus (55–60 nm, virus of animals),
+external and inner capsids
+
+Transverse sec-tion
+of adenovirus showing
+position of the DNA
+
+Fig. 1. Structure of icosahedral viruses (Rees and Sternberg, 1984, 2002).
+
+1697
+
+DNA
+
+1698
+
+VOYTEKHOVSKY
+
+This provides a certain convenience. The number of
+globules in a capsid is M = 10T + 2. They form morphological subunits: 12 pentamers and 10(T – 1) hexamers. Here, T = (m – 1)2, where m is the number of
+globules on the edge of the mega-face, if they are
+arranged directionally (Voytekhovsky, 2016). In addition, 20T is the number of elementary triangular faces
+in any icosadeltahedron simulating the capsid. These
+characteristics are known for many viruses: bacteriophage ϕX174: T = 1, M = 12, m = 2, (h, k) = (1, 0); turnip yellow mosaic virus: T = 3, M = 32, (h, k) = (1, 1);
+polyomavirus: T = 4, M = 42, m = 3, (h, k) = (2, 0);
+papovavirus: T = 7, M = 72, (h, k) = (2, 1); reovirus:
+T = 9, M = 92, m = 4, (h, k) = (3, 0); rotavirus: T = 13,
+M = 132, (h, k) = (3, 1); herpes virus and varicella zoster virus: T = 16, M = 162, m = 5, (h, k) = (4, 0); adenovirus and canine hepatitis virus: T = 25, M = 252,
+m = 6, (h, k) = (5, 0); and iridescent virus: T = 81, M =
+812, m = 10, (h, k) = (9, 0).
+
+(h, k)
+
+Fig. 2. Diagram illustrating the description of icosahedral
+capsid.
+
+The analysis of Table 1 shows the presence of isomers: viruses with the same triangulation number. At
+T = 49, they can be distinguished by the symmetry
+group: the capsid (h, k) = (7, 0) has point symmetry
+group 3 5m , and the capsid (5, 3) has point symmetry
+group 235 (in modern crystallographic notation). But
+at T = 91 both capsids (9, 1) and (6, 5) have the symmetry 235. Moreover, the structure of any capsid is
+uniquely identified by symbol (h, k). Thus it is expedient to take this symbol as a basis for the nomenclature.
+
+Klug (1962). Each capsid is assembled out of 20 equilateral triangular mega-faces, fragments of a flat grid
+formed by globules according to the principle of the
+densest hexagonal packing. The lines of globules do
+not necessarily coincide with the edges of mega-face,
+thus creating the problem of finding a general formula
+for the number of globules in the capsid. The above
+article announced a theorem enumerating the “triangulation numbers” allowed for icosahedral capsids:
+T = P f 2, where P = h2 + hk + k2, 0 < h ≥ k ≥ 0 are any
+pairs of integers without common divisors, and f = 1,
+2, 3, …. It was first proved in the article by Schmalz
+et al. (1988, pp. 1124–1125). In fact, h and k are the
+coordinates of the end of the basal edge of the megaface in an oblique (60°) Cartesian coordinate system
+coordinated with the closest hexagonal packing of
+globules (Fig. 2).
+The description of icosahedral capsids is now based
+precisely on the triangulation numbers T (Table 1).
+
+CLASSES 3 5m AND 235
+Caspar and Klug (1962, p. 15, Table 1) proposed to
+divide the icosahedral capsids into three classes. The
+first class (top row of Table 1) is generated by the simplest capsid (1, 0), an icosahedron with protein globules at its vertices. The remaining capsids of this class
+are obtained by enlarging the face of icosahedron
+using the ratios of magnification f = 2, 3, 4 … with the
+
+Table 1. Triangulation numbers T
+k/h
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+1
+3
+
+4
+7
+12
+
+9
+13
+19
+27
+
+16
+21
+28
+37
+48
+
+25
+31
+39
+49
+61
+75
+
+36
+43
+52
+63
+76
+91
+108
+
+49
+57
+67
+79
+93
+109
+127
+147
+
+64
+73
+84
+97
+112
+129
+148
+169
+192
+
+81
+91
+103
+117
+133
+151
+171
+193
+217
+243
+
+100
+111
+124
+139
+156
+175
+196
+219
+244
+271
+300
+
+No. 14
+
+2018
+
+PALEONTOLOGICAL JOURNAL
+
+Vol. 52
+
+ALGEBRAIC GEOMETRY OF ICOSAHEDRAL VIRUSES
+
+1699
+
+Table 2. Triangulation numbers T for generators
+k/h
+
+1
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+1
+
+2
+
+3
+
+7
+
+13
+19
+
+4
+
+37
+
+5
+
+6
+
+31
+
+43
+67
+79
+
+49
+61
+91
+
+8
+
+9
+
+73
+
+91
+103
+
+97
+
+10
+
+139
+133
+151
+
+109
+127
+169
+
+193
+217
+271
+
+same orientation in the coordinate system consistent
+with the closest hexagonal packing of the globules
+(Fig. 2). It is logical to designate this class (f, 0).
+The second class (diagonal of Table 1) is similarly
+generated by the capsid (1, 1), a dodecahedron with
+pentagonal pyramids added to its faces. It may be designated (f, f). The authors of the article note that the
+capsids of both classes have symmetry planes, unlike
+the other capsids, which have only rotation axes. Judging by the fact that all the other capsids are called
+“skew classes,” each symbol (h, k) means a separate
+class, each class contains a single capsid. This is not
+logical, since the similitude transformation of any
+capsid generates an infinite homological series of
+equally arranged capsids:: (h, k) → (fh, fk)… In fact,
+Table 1 consists of homological series beginning with
+capsids (h, k) in which h and k share no common
+divisors.
+Table 1 contains even more interesting relationships. First of all, we note that the capsid (1, 1) is
+obtained from capsid (1, 0) in the same way like a
+truncated icosahedron is obtained from a dodecahedron by the dual transformation and truncation of vertices. How could this be expressed algebraically? On
+the integer lattice (Fig. 1), the edges of two capsids
+(h1, k1) and (h2, k2) can be linearly expressed by each
+other. Let the desired transformation be (h1, k1) →
+(h2, k2) = (ah1 + bk1, ch1 + dk1). This transformation
+triples the triangulation number (see Voytekhovsky,
+2016). From the condition T2 = 3T1 we find that for
+any (h1, k1) it can only be solvable in one case:
+(h1, k1) → (h1 + 2k1, h1 – k1). The following transitions
+can be easily verified by substitution: (f, 0) → (f, f) →
+(3f, 0) → (3f, 3f)… Thus, the homological series (f, 0)
+and (f, f) are combined in class -3-5m. Similarly, two
+homological series formed by capsids (h, k) and
+(h + 2k, h – k), in which x and k share no common
+divisors, are combined in class 235. Capsids (h, k) not
+reducible to simpler ones in the homological series
+have been previously named by the author as generators. The criteria of generator are as follows: h and k
+PALEONTOLOGICAL JOURNAL
+
+7
+
+Vol. 52
+
+No. 14
+
+are relatively prime, and h – k is not divisible by 3
+(Table 2).
+GENERAL TRANSFORMATION
+OF THE CAPSID
+The question arises as to whether it is possible to
+find a general transformation (h1, k1) → (h2, k2) that
+transforms any capsid into any other capsid, as it is
+done for fullerenes that simulate the microevolution of
+the skeletons of radiolarians (Voytekhovsky and Stepenshchikov, 2016)? In this case, the problem consists
+in rotating the vector (h1, k1) through some angle α to
+the vector (h2, k2) and an additional dilation/contraction (Fig. 3). In an orthogonal Cartesian coordinate
+system this transformation has the form
+
+2018
+
+⎛ cos α sin α ⎞ ⎛ t 0 ⎞
+⎟⎜
+⎟,
+⎝ − sin α cos α ⎠ ⎝ 0 t ⎠
+
+( x2, y2 ) = ( x1, y1 ) ⎜
+
+(h2, k2)
+
+(h1, k1)
+
+D
+
+Fig. 3. Diagram illustrating the description of transformations of icosahedral capsid.
+
+1700
+
+VOYTEKHOVSKY
+
+where α = α2 – α1, t = (T2/T1)1/2 is the dilation factor.
+The formulas for transforming it to the oblique (60°)
+12
+12
+coordinate system: x1 = T1 cos α1, y1 = T1 sin α1, x2 =
+
+T2 cos α2, y2 = T2 sin α2. After substitution and
+transformations, we obtain:
+12
+
+12
+
+⎛ cos α sin α ⎞
+⎟.
+⎝ − sin α cos α ⎠
+
+(cos α2,sin α2 ) = (cos α1,sin α1 ) ⎜
+
+Let us express trigonometric functions through the
+sides of triangles (Fig. 3) and after some algebraic transformations we obtain the required transformation:
+
+(2h2 + k2, 3k2 )
+
+⎛ cos α sin α ⎞
+= ( 2h1 + k1, 3k1 ) ⎜
+⎟ T2 T1.
+⎝ − sin α cos α ⎠
+Given (h1, k1) and (h2, k2), we find the dilation factor (T2/T1)1/2 and the angle 0° ≤ α ≤ 60°.
+The above relations follow from the obtained equation. Thus, for the homological series (h1, k1) →
+(h2, k2) = (f h1, f k1), we obtain by substitution:
+⎛ cos α sin α ⎞
+
+(2h1 + k1, 3k1 ) = (2h1 + k1, 3k1 ) ⎜ − sin α cos α ⎟
+
+⎝
+⎠
+from which follows: cos α = 1, sin α = 0, that is, α =
+0. This is so, because these series combine capsids with
+similar faces that are equally directed in the coordinate
+system (Fig. 2).
+The case of dual transformations (h1, k1) → (h2, k2) =
+(h1 + 2k1, h1 – k1) is of greater interest. Here we obtain
+the general solution in the form:
+
+α = arcsin [1 2 − 3k1 ( h1 + k1 ) 2T1 ] .
+If k1 = 0, then α = 30°; if k1 = h1, then α = –30°, in
+both cases the dilation factor is 3. This is true in general: the successive dual transformations differ only in
+the sign of rotation.
+CONCLUSIONS
+• The nomenclature of the icosahedral capsid is
+proposed to be developed based on the symbol (h, k)
+of its mega-icosahedral face, since this symbol unambiguously fixes the position of the face in the lattice of
+capsomeres (protein globules) arranged according to
+the principle of the densest hexagonal packing.
+• The classification of capsids based on point symmetry groups 3 5m (with symmetry planes) and 235
+(without them) is logical; however, this is only the first
+step. Class 3 5m consists of homological series (f, 0)
+
+and (f, f), where f = 1, 2, 3 …, with the series connected
+by the dual transformation (h1, k1) → (h1 + 2k1, h1 – k1).
+• The class 235 also consists of the homological
+series (f h, f k) generated by the generators (h, k), identified by the criterion: h and k are relatively prime,
+h ‒ k is not divisible by 3. Each series in class 235 has
+another series, associated with it by the dual transformation (h1, k1) → (h1 + 2k1, h1 – k1).
+• A matrix representation of any transformation
+(h1, k1) → (h2, k2) has been obtained. The icosahedral
+capsids are a rare case of biological organization for
+which it is possible to obtain such a general result, even
+if it has only theoretical significance.
+• The following problems are of interest: the frequency of occurrence of icosahedral viruses of classes
+3 5m and 235, in particular that of different kinds of
+(h, k), or, in even more detailed ways, that of isomers
+having different (h, k) but the same triangulation
+number T.
+REFERENCES
+Caspar, D.L.D. and Klug, A., Physical principles in the
+construction of regular viruses, Cold Spring Harbor Symp.
+Quant. Biol., 1962, vol. 27, pp. 1–24.
+Luria, S.E., Darnell, J.E., Jr., Baltimore, D., and Campell, A.,
+General Virology, New York: John Wiley & Sons, 3rd ed.,
+1978.
+Luria, S.E., Darnell, J.E., Jr., Baltimore, D., and Campell, A.,
+Obshchaya virusologiya (General Virology), Moscow: Mir,
+1981.
+Rees, A.R. and Sternberg, M.J.E., From Cells to Atoms: an
+Illustrated Introduction to Molecular Biology, Oxford: Blackwell Sci. Publ., 1984.
+Rees, A.R. and Sternberg, M.J.E., Vvedenie v molekulyarnuyu biologiyu: ot kletok k atomam (From Cells to Atoms: an
+Illustrated Introduction to Molecular Biology), Moscow:
+Mir, 2002.
+Schmalz, T.G., Seitz, W.A., Klein, D.J., and Hite, G.E.,
+Elemental carbon cages, J. Am. Chem. Soc., 1988, vol. 110,
+no. 4, pp. 1113–1127.
+Voytekhovsky, Yu.L., Biomineral analogues in ontogeny
+and phylogeny, Paleontol. J., 2015, vol. 49, no. 14,
+pp. 1691–1697.
+Voytekhovsky, Yu.L., Homological series of icosahedral
+viruses and fullerenes, Paleontol. J., 2016, vol. 50, no. 13,
+pp. 1505–1509.
+Voytekhovsky, Yu.L. and Stepenshchikov, D.G., Fullerene
+transformations as analogues of radiolarian skeleton microevolution, Paleontol. J., 2016, vol. 50, no. 13, pp. 1544–
+1548.
+
+PALEONTOLOGICAL JOURNAL
+
+Translated by L. Lukyanov
+
+Vol. 52
+
+No. 14
+
+2018
+
+

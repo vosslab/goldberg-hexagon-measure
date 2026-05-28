@@ -1,4 +1,4 @@
-"""Markdown report rendering for graph-only Goldberg results."""
+"""Markdown report rendering for Goldberg polyhedron reports."""
 
 import goldberg_brick.dual
 import goldberg_brick.geometry
@@ -27,7 +27,8 @@ def render_markdown_report(
 	graph: goldberg_brick.dual.GoldbergGraph,
 	hexagon_orbits: tuple[goldberg_brick.orbits.HexagonOrbit, ...],
 	hexagon_geometries: dict[str, goldberg_brick.geometry.HexagonGeometry],
-	model: str,
+	units: str,
+	scale: float,
 ) -> str:
 	"""Render a deterministic Markdown report."""
 	index_data = graph.mesh.index_data
@@ -42,11 +43,16 @@ def render_markdown_report(
 		"",
 		"## Summary",
 		"",
+	]
+	lines.extend([
 		f"h: {index_data.h}",
 		f"k: {index_data.k}",
 		f"T: {index_data.t_number}",
 		f"class: {index_data.goldberg_class}",
-		f"model: {model}",
+		f"units: {units}",
+		f"scale: {scale}",
+		"model: equilateral-goldberg",
+		"metric: chord",
 		f"pentagons: {pentagons}",
 		f"hexagons: {hexagons}",
 		f"total faces: {len(graph.faces)}",
@@ -67,7 +73,7 @@ def render_markdown_report(
 		"",
 		"| orbit | count | angle pattern | side pattern | dihedral pattern | warp mode | orientation | difficulty | shape summary | max angle deviation | side spread | planarity | dihedral spread | suggested use |",
 		"|---|---:|---|---|---|---|---|---|---|---:|---:|---|---:|---|",
-	]
+	])
 	for orbit in hexagon_orbits:
 		summary = builder_summaries[orbit.orbit_id]
 		lines.append(
@@ -106,20 +112,36 @@ def render_markdown_report(
 		"",
 		"## Raw hexagon geometry",
 		"",
-		"| orbit_id | face_count | mirror_orbit | angle_pattern | side_pattern | dihedral_pattern | side_length_sequence | angle_sequence | planarity_error | dihedral_angle_sequence | deformation_mode | brick_strategy |",
+		f"| orbit_id | face_count | mirror_orbit | angle_pattern | side_pattern | dihedral_pattern | side_length_sequence ({units}) | angle_sequence | planarity_error ({units}) | dihedral_angle_sequence | deformation_mode | brick_strategy |",
 		"|---|---:|---|---|---|---|---|---|---:|---|---|---|",
 	])
 	for orbit in hexagon_orbits:
 		geometry = hexagon_geometries[orbit.orbit_id]
 		summary = builder_summaries[orbit.orbit_id]
+		scaled_planarity_error = geometry.planarity_error * scale
+		# Raw absolute spread (max - min) in unit-edge space for the side
+		# sequence; brick_strategy uses an absolute threshold, not a percent.
+		raw_side_spread = goldberg_brick.geometry.sequence_spread(
+			geometry.side_length_sequence
+		)
+		distinct_angle_count = len(set(summary.angle_pattern))
+		brick_strategy = goldberg_brick.geometry.classify_brick_strategy(
+			geometry, raw_side_spread, distinct_angle_count
+		)
+		deformation_mode = geometry.warp_mode
 		lines.append(
 			f"| {orbit.orbit_id} | {orbit.face_count} | {orbit.mirror_orbit} | "
 			f"{summary.angle_pattern} | {summary.side_pattern} | {summary.dihedral_pattern} | "
-			f"{format_sequence(geometry.side_length_sequence)} | "
+			f"{format_sequence_scaled(geometry.side_length_sequence, scale)} | "
 			f"{format_sequence(geometry.angle_sequence)} | "
-			f"{geometry.planarity_error:.9f} | "
-			f"{format_sequence(geometry.dihedral_angle_sequence)} | NA | NA |"
+			f"{scaled_planarity_error:.9f} | "
+			f"{format_sequence(geometry.dihedral_angle_sequence)} | "
+			f"{deformation_mode} | {brick_strategy} |"
 		)
+	# Per-orbit connector counts section.
+	lines.extend(build_connector_counts_section(
+		hexagon_orbits, hexagon_geometries, units, scale
+	))
 	text = "\n".join(lines)
 	text += "\n"
 	return text
@@ -131,10 +153,13 @@ def write_markdown_report(
 	graph: goldberg_brick.dual.GoldbergGraph,
 	hexagon_orbits: tuple[goldberg_brick.orbits.HexagonOrbit, ...],
 	hexagon_geometries: dict[str, goldberg_brick.geometry.HexagonGeometry],
-	model: str,
+	units: str,
+	scale: float,
 ) -> None:
 	"""Write a Markdown report to disk."""
-	text = render_markdown_report(graph, hexagon_orbits, hexagon_geometries, model)
+	text = render_markdown_report(
+		graph, hexagon_orbits, hexagon_geometries, units, scale
+	)
 	with open(output_path, "w", encoding="utf-8") as handle:
 		handle.write(text)
 
@@ -162,10 +187,63 @@ def build_mirror_notes(
 
 
 #============================================
+def build_connector_counts_section(
+	hexagon_orbits: tuple[goldberg_brick.orbits.HexagonOrbit, ...],
+	hexagon_geometries: dict[str, goldberg_brick.geometry.HexagonGeometry],
+	units: str,
+	scale: float,
+) -> list[str]:
+	"""Build the per-orbit connector counts Markdown sub-section lines."""
+	section = ["", "## Per-orbit connector counts", ""]
+	for orbit in hexagon_orbits:
+		geometry = hexagon_geometries[orbit.orbit_id]
+		counts = goldberg_brick.geometry.connector_counts(geometry, orbit.face_count)
+		section.append(f"### {orbit.orbit_id} (face_count: {orbit.face_count})")
+		section.append("")
+		# Angles table
+		section.append("| angle (deg) | count_per_face | total |")
+		section.append("| --- | --- | --- |")
+		for cls in counts.angles:
+			section.append(
+				f"| {cls.value:.3f} | {cls.count_per_face} | {cls.total_in_orbit} |"
+			)
+		section.append("")
+		# Sides table; multiply by scale and label with units.
+		section.append(f"| side ({units}) | count_per_face | total |")
+		section.append("| --- | --- | --- |")
+		for cls in counts.sides:
+			scaled_value = cls.value * scale
+			section.append(
+				f"| {scaled_value:.3f} | {cls.count_per_face} | {cls.total_in_orbit} |"
+			)
+		section.append("")
+		# Dihedrals table.
+		section.append("| dihedral (deg) | count_per_face | total |")
+		section.append("| --- | --- | --- |")
+		for cls in counts.dihedrals:
+			section.append(
+				f"| {cls.value:.3f} | {cls.count_per_face} | {cls.total_in_orbit} |"
+			)
+		section.append("")
+	return section
+
+
+#============================================
 def format_sequence(values: tuple[float, ...]) -> str:
 	"""Format a numeric sequence for one Markdown table cell."""
 	text_values = []
 	for value in values:
 		text_values.append(f"{value:g}")
+	text = "[" + ", ".join(text_values) + "]"
+	return text
+
+
+#============================================
+def format_sequence_scaled(values: tuple[float, ...], scale: float) -> str:
+	"""Format a numeric sequence scaled by the given factor."""
+	text_values = []
+	for value in values:
+		scaled_value = value * scale
+		text_values.append(f"{scaled_value:g}")
 	text = "[" + ", ".join(text_values) + "]"
 	return text

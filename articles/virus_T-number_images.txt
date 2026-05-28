@@ -1,0 +1,45 @@
+Class I Virus Capsids
+
+T=1
+
+T=4
+
+Icosahedron
+
+Pentakis
+Icosidodecahedron
+
+T=9
+
+T=16
+
+Conway K6k5tI
+
+Class II Virus Capsids
+
+T=3
+
+T=12
+
+Pentakis
+Dodecahedron
+
+Conway kt5daD
+
+T=27
+
+T=48
+
+Class III Virus Capsids
+
+T=7
+Pentakis Snub
+Dodecahedron
+
+T=21
+
+T=13
+
+T=39
+
+
