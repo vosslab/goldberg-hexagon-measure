@@ -195,3 +195,21 @@
 - Removed `xfail` decorator from `test_gp_2_2_60_face_orbit_angle_sequence_literature` (now passes consistently).
 - Updated orbit tests to specify `construction="centroid"` for GP(2,0) and GP(4,2); test suite shows
   264 passed, zero xfailed on GP(2,2) angle pattern tests.
+- Audit: paper-code parity sweep of `articles/*.txt` against `goldberg_brick/`.
+  Master report at
+  [docs/active_plans/active/solver_paper_parity.md](active_plans/active/solver_paper_parity.md).
+  Scope narrowed to solver/report geometry (priority papers schein-gayed-2014
+  and liu-2022; secondary siber-2020 and brinkmann-schein-2017; background
+  johnson-2021, twarock-2019, voytekhovsky-2018, mannige-2010,
+  virus_T-number_images). Three spot-checks passed (Schein-Gayed Eq. 1
+  dihedral formula, T-number formula, face-count formulas). One
+  correctness_blocker filed:
+  [docs/active_plans/active/fix_chiral_reduction.md](active_plans/active/fix_chiral_reduction.md)
+  -- Schein-Gayed C16 chiral b=a perimeter reduction is missing for Class III
+  cages and is the most likely cause of GP(4,2) Stage B rollback to a
+  non-planar warp_mode (Decisions and Failures item above). Two
+  documentation_only stubs filed:
+  [docs/active_plans/active/divergence_chirality_labels.md](active_plans/active/divergence_chirality_labels.md)
+  (chirality flag / laevo-dextro / canonical ordering) and
+  [docs/active_plans/active/divergence_paper_citations.md](active_plans/active/divergence_paper_citations.md)
+  (missing paper cites in docstrings).
